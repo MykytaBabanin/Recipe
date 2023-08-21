@@ -22,8 +22,8 @@ private struct Constants {
     }
 }
 
-typealias ImageStyle = Styles.Welcome.Image
-typealias ButtonStyle = Styles.Welcome.Button
+private typealias ImageStyle = Welcome.Image
+private typealias ButtonStyle = Welcome.Button
 
 final class WelcomeView: UIViewController, Viewable {
     typealias PresenterType = WelcomePresenter
@@ -44,7 +44,7 @@ final class WelcomeView: UIViewController, Viewable {
     }()
     
     private lazy var startButton: UIButton = {
-        ButtonStyle.apply(for: view)
+        ButtonStyle.apply()
     }()
     
     private lazy var mainSubtitle: UIImageView = {

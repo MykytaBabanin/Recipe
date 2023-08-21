@@ -13,6 +13,7 @@ final class WelcomeRouter: Routable {
     
     func navigateLogin() {
         let loginModule = LoginConfigurator.build()
+        loginModule.presenter?.disableBackButton()
         view?.navigationController?.pushViewController(loginModule, animated: true)
     }
 }

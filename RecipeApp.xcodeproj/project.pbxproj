@@ -14,7 +14,7 @@
 		BB34BB992A88C6EC006C2732 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB982A88C6EC006C2732 /* RegistrationPresenter.swift */; };
 		BB34BB9B2A88C6F6006C2732 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB9A2A88C6F6006C2732 /* RegistrationView.swift */; };
 		BB34BB9D2A88C6FF006C2732 /* RegistrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB9C2A88C6FF006C2732 /* RegistrationConfigurator.swift */; };
-		BBA2961C2A82E6A2004996DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2961B2A82E6A2004996DE /* Style.swift */; };
+		BBA2961C2A82E6A2004996DE /* WelcomeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2961B2A82E6A2004996DE /* WelcomeStyle.swift */; };
 		BBA296212A82EA60004996DE /* LoginConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296202A82EA60004996DE /* LoginConstants.swift */; };
 		BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296232A863146004996DE /* WelcomeEntity.swift */; };
 		BBA296262A86314F004996DE /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296252A86314F004996DE /* WelcomeInteractor.swift */; };
@@ -25,6 +25,19 @@
 		BBA296342A866997004996DE /* WelcomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296332A866997004996DE /* WelcomeConfigurator.swift */; };
 		BBA296382A866E72004996DE /* ModuleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296372A866E72004996DE /* ModuleProtocols.swift */; };
 		BBA2963A2A866ED3004996DE /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296392A866ED3004996DE /* ModuleBuilder.swift */; };
+		BBCD56E22A914AB400F9BF61 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E12A914AB400F9BF61 /* HomeEntity.swift */; };
+		BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */; };
+		BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */; };
+		BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */; };
+		BBCD56EA2A914B1300F9BF61 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E92A914B1300F9BF61 /* HomeView.swift */; };
+		BBCD56EC2A914B2F00F9BF61 /* HomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56EB2A914B2F00F9BF61 /* HomeConfigurator.swift */; };
+		BBCD56F02A91566A00F9BF61 /* UiControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56EF2A91566A00F9BF61 /* UiControl+Extensions.swift */; };
+		BBCD56F42A949A0300F9BF61 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56F32A949A0300F9BF61 /* UIButton+Extensions.swift */; };
+		BBCD56F62A94A02000F9BF61 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56F52A94A02000F9BF61 /* UILabel+Extensions.swift */; };
+		BBCD56F82A94A80900F9BF61 /* LoginStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56F72A94A80900F9BF61 /* LoginStyle.swift */; };
+		BBCD56FA2A94A81100F9BF61 /* RegistrationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56F92A94A81100F9BF61 /* RegistrationStyle.swift */; };
+		BBCD56FC2A94A8C500F9BF61 /* GeneralStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56FB2A94A8C500F9BF61 /* GeneralStyle.swift */; };
+		BBCD56FE2A94ADED00F9BF61 /* AutoLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */; };
 		BBD3F36B2A8183BC00369CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */; };
 		BBD3F36D2A8183BC00369CB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */; };
 		BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36E2A8183BC00369CB2 /* LoginView.swift */; };
@@ -45,7 +58,7 @@
 		BB34BB982A88C6EC006C2732 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		BB34BB9A2A88C6F6006C2732 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BB34BB9C2A88C6FF006C2732 /* RegistrationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfigurator.swift; sourceTree = "<group>"; };
-		BBA2961B2A82E6A2004996DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		BBA2961B2A82E6A2004996DE /* WelcomeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStyle.swift; sourceTree = "<group>"; };
 		BBA296202A82EA60004996DE /* LoginConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConstants.swift; sourceTree = "<group>"; };
 		BBA296232A863146004996DE /* WelcomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeEntity.swift; sourceTree = "<group>"; };
 		BBA296252A86314F004996DE /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
@@ -56,6 +69,19 @@
 		BBA296332A866997004996DE /* WelcomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeConfigurator.swift; sourceTree = "<group>"; };
 		BBA296372A866E72004996DE /* ModuleProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleProtocols.swift; sourceTree = "<group>"; };
 		BBA296392A866ED3004996DE /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		BBCD56E12A914AB400F9BF61 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
+		BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		BBCD56E92A914B1300F9BF61 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BBCD56EB2A914B2F00F9BF61 /* HomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConfigurator.swift; sourceTree = "<group>"; };
+		BBCD56EF2A91566A00F9BF61 /* UiControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiControl+Extensions.swift"; sourceTree = "<group>"; };
+		BBCD56F32A949A0300F9BF61 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		BBCD56F52A94A02000F9BF61 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		BBCD56F72A94A80900F9BF61 /* LoginStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStyle.swift; sourceTree = "<group>"; };
+		BBCD56F92A94A81100F9BF61 /* RegistrationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStyle.swift; sourceTree = "<group>"; };
+		BBCD56FB2A94A8C500F9BF61 /* GeneralStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralStyle.swift; sourceTree = "<group>"; };
+		BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutHelper.swift; sourceTree = "<group>"; };
 		BBD3F3672A8183BC00369CB2 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +142,41 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		BBCD56E02A914AA700F9BF61 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BBCD56E12A914AB400F9BF61 /* HomeEntity.swift */,
+				BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */,
+				BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */,
+				BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */,
+				BBCD56E92A914B1300F9BF61 /* HomeView.swift */,
+				BBCD56EB2A914B2F00F9BF61 /* HomeConfigurator.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BBCD56F12A91581B00F9BF61 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				BBCD56E02A914AA700F9BF61 /* Home */,
+				BB34BB912A88C6B3006C2732 /* Registration */,
+				BBD3F38A2A818BCA00369CB2 /* Login */,
+				BBA296222A863133004996DE /* Welcome */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		BBCD56F22A91584400F9BF61 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				BBA2961B2A82E6A2004996DE /* WelcomeStyle.swift */,
+				BBCD56F72A94A80900F9BF61 /* LoginStyle.swift */,
+				BBCD56F92A94A81100F9BF61 /* RegistrationStyle.swift */,
+				BBCD56FB2A94A8C500F9BF61 /* GeneralStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		BBD3F35E2A8183BC00369CB2 = {
 			isa = PBXGroup;
 			children = (
@@ -135,14 +196,10 @@
 		BBD3F3692A8183BC00369CB2 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
-				BBD3F38B2A818BDF00369CB2 /* Helper */,
+				BBCD56F22A91584400F9BF61 /* Styles */,
+				BBCD56F12A91581B00F9BF61 /* Screens */,
 				BBA296352A866E55004996DE /* Base */,
-				BB34BB912A88C6B3006C2732 /* Registration */,
-				BBA296222A863133004996DE /* Welcome */,
-				BBD3F38A2A818BCA00369CB2 /* Login */,
-				BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */,
-				BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */,
-				BBA2961B2A82E6A2004996DE /* Style.swift */,
+				BBD3F38B2A818BDF00369CB2 /* Helper */,
 				BBD3F3732A8183BD00369CB2 /* Assets.xcassets */,
 				BBD3F3752A8183BD00369CB2 /* LaunchScreen.storyboard */,
 				BBD3F3782A8183BD00369CB2 /* Info.plist */,
@@ -167,8 +224,14 @@
 		BBD3F38B2A818BDF00369CB2 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */,
+				BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */,
 				BBD3F3882A81894000369CB2 /* UIView+Extensions.swift */,
 				BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */,
+				BBCD56EF2A91566A00F9BF61 /* UiControl+Extensions.swift */,
+				BBCD56F32A949A0300F9BF61 /* UIButton+Extensions.swift */,
+				BBCD56F52A94A02000F9BF61 /* UILabel+Extensions.swift */,
+				BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -246,16 +309,23 @@
 				BB34BB972A88C6E3006C2732 /* RegistrationRouter.swift in Sources */,
 				BB34BB992A88C6EC006C2732 /* RegistrationPresenter.swift in Sources */,
 				BBD3F3832A81853F00369CB2 /* LoginPresenter.swift in Sources */,
+				BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */,
 				BBD3F37F2A81850F00369CB2 /* LoginEntity.swift in Sources */,
+				BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */,
 				BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */,
 				BBA2963A2A866ED3004996DE /* ModuleBuilder.swift in Sources */,
 				BBA2962C2A86316C004996DE /* WelcomeView.swift in Sources */,
+				BBCD56E22A914AB400F9BF61 /* HomeEntity.swift in Sources */,
 				BBA2962A2A863162004996DE /* WelcomeRouter.swift in Sources */,
+				BBCD56F42A949A0300F9BF61 /* UIButton+Extensions.swift in Sources */,
 				BBD3F3892A81894000369CB2 /* UIView+Extensions.swift in Sources */,
 				BBA296262A86314F004996DE /* WelcomeInteractor.swift in Sources */,
+				BBCD56EC2A914B2F00F9BF61 /* HomeConfigurator.swift in Sources */,
 				BBD3F3852A81854F00369CB2 /* LoginRouter.swift in Sources */,
 				BB34BB932A88C6D1006C2732 /* RegistrationEntity.swift in Sources */,
 				BBD3F3812A81853200369CB2 /* LoginInteractor.swift in Sources */,
+				BBCD56FE2A94ADED00F9BF61 /* AutoLayoutHelper.swift in Sources */,
+				BBCD56EA2A914B1300F9BF61 /* HomeView.swift in Sources */,
 				BB34BB952A88C6DC006C2732 /* RegistrationInteractor.swift in Sources */,
 				BB34BB9B2A88C6F6006C2732 /* RegistrationView.swift in Sources */,
 				BBA296342A866997004996DE /* WelcomeConfigurator.swift in Sources */,
@@ -263,12 +333,18 @@
 				BBA296282A863155004996DE /* WelcomePresenter.swift in Sources */,
 				BBA2962E2A864CA6004996DE /* UIColor+Extensions.swift in Sources */,
 				BBA296212A82EA60004996DE /* LoginConstants.swift in Sources */,
-				BBA2961C2A82E6A2004996DE /* Style.swift in Sources */,
+				BBA2961C2A82E6A2004996DE /* WelcomeStyle.swift in Sources */,
 				BB34BB9D2A88C6FF006C2732 /* RegistrationConfigurator.swift in Sources */,
 				BBA296382A866E72004996DE /* ModuleProtocols.swift in Sources */,
+				BBCD56F82A94A80900F9BF61 /* LoginStyle.swift in Sources */,
+				BBCD56F02A91566A00F9BF61 /* UiControl+Extensions.swift in Sources */,
+				BBCD56F62A94A02000F9BF61 /* UILabel+Extensions.swift in Sources */,
+				BBCD56FA2A94A81100F9BF61 /* RegistrationStyle.swift in Sources */,
 				BBD3F36D2A8183BC00369CB2 /* SceneDelegate.swift in Sources */,
 				BB34BB902A88C1EA006C2732 /* LoginConfigurator.swift in Sources */,
 				BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */,
+				BBCD56FC2A94A8C500F9BF61 /* GeneralStyle.swift in Sources */,
+				BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

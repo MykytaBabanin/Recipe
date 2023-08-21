@@ -15,4 +15,12 @@ final class RegistrationPresenter: Presentable {
     var view: ViewType?
     var interactor: InteractorType?
     var router: RouterType?
+    
+    func disableBackButton() {
+        router?.disableBackButton()
+    }
+    
+    func navigateLogin() {
+        router?.navigateLogin()
+    }
 }
