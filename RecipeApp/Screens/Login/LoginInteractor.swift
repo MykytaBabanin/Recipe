@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 enum AuthenticationError {
     case userNameError
@@ -27,14 +26,13 @@ final class LoginInteractor: Interactable {
         self.authenticationProvider = authenticationProvider
     }
     
-    func handleAuthentication(username: String, password: String) async throws -> AuthDataResult {
-        let errors = validateCredentials(username: username, password: password)
+    func handleAuthentication(username: String, password: String) async throws {
+        let validationErrors = validateCredentials(username: username, password: password)
         
-        guard errors.isEmpty else {
-            throw AuthenticationErrors(errors: errors)
+        guard validationErrors.isEmpty else {
+            throw AuthenticationErrors(errors: validationErrors)
         }
-        
-        return try await authenticationProvider.signIn(email: username, password: password)
+        try await authenticationProvider.signIn(email: username, password: password)
     }
     
     func validateCredentials(username: String, password: String) -> [AuthenticationError] {

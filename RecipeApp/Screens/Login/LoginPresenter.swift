@@ -28,13 +28,18 @@ final class LoginPresenter: Presentable {
     func authenticate(email: String, password: String) {
         Task {
             do {
-                guard let result = try await interactor?.handleAuthentication(username: email, password: password) else { return }
+                try await interactor?.handleAuthentication(username: email, password: password)
                 DispatchQueue.main.async {
                     self.successfullAuthentication()
                 }
             } catch let errors as AuthenticationErrors {
                 DispatchQueue.main.async {
                     self.failureAuthentication(errors: errors)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                    self.view?.successfullyValidateFields()
                 }
             }
         }
