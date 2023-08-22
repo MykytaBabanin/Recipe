@@ -16,6 +16,16 @@ final class RegistrationPresenter: Presentable {
     var interactor: InteractorType?
     var router: RouterType?
     
+    func registerUser(email: String, password: String) async -> Bool {
+        do {
+            _ = try await interactor?.createUser(email: email, password: password)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
     func disableBackButton() {
         router?.disableBackButton()
     }

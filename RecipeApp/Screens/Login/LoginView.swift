@@ -49,12 +49,10 @@ final class LoginView: UIViewController, Viewable {
     }()
     
     private lazy var dontHaveAccountLabel: UILabel = {
-        TitleStyle.apply(text: "Don't have an account?Sign up",
-                                 fontSize: 11,
-                                 textAlignment: .center,
-                                 withLink: true,
-                                 target: self,
-                                 action: #selector(registrationButtonTapped))
+        TitleStyle.applyLink(text: "Don't have an account?",
+                             clickableText: "Sign up",
+                             target: self,
+                             action: #selector(registrationButtonTapped))
     }()
     
     override func viewDidLoad() {
@@ -64,10 +62,10 @@ final class LoginView: UIViewController, Viewable {
         setupBindings()
     }
     
-    func checkValidation(_ errors: [AuthenticationError]) {
+    func checkValidation(_ errors: AuthenticationErrors) {
         successfullyValidateFields()
 
-        for error in errors {
+        for error in errors.errors {
             switch error {
             case .userNameError:
                 authenticationFailure.username = true
@@ -152,9 +150,9 @@ final class LoginView: UIViewController, Viewable {
     }
     
     @objc private func loginButtonTapped() {
-        guard let username = usernameTextField.text,
+        guard let email = usernameTextField.text,
               let password = passwordTextField.text else { return }
-        presenter?.authenticate(username: username, password: password)
+        presenter?.authenticate(email: email, password: password)
     }
 }
 

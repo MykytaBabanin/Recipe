@@ -31,6 +31,7 @@ enum Registration {
             let textField = UITextField()
             textField.placeholder = placeholder
             textField.borderStyle = .roundedRect
+            textField.autocapitalizationType = .none
             textField.isSecureTextEntry = isSecure ?? false
             return textField
         }

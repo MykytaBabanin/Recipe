@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class HomeView: UIViewController, Viewable {
     typealias PresenterType = HomePresenter

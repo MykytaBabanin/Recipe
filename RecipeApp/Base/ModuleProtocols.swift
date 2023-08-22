@@ -24,6 +24,7 @@ protocol Presentable: AnyObject {
 
 protocol Interactable: AnyObject {
     associatedtype PresenterType: Presentable
+    var authenticationProvider: AuthenticationProviderProtocol { get }
     var presenter: PresenterType? { get set }
 }
 

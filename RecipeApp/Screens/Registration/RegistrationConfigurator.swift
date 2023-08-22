@@ -9,9 +9,11 @@ import Foundation
 
 final class RegistrationConfigurator {
     static func build() -> RegistrationView {
+        let authenticationProvider = FirebaseAuthenticationProvider()
+        let interactor = RegistrationInteractor(authenticationProvider: authenticationProvider)
+        
         let view = RegistrationView()
         let presenter = RegistrationPresenter()
-        let interactor = RegistrationInteractor()
         let router = RegistrationRouter()
         
         return ModuleBuilder.build(view: view, presenter: presenter, interactor: interactor, router: router)

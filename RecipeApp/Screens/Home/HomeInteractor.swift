@@ -8,6 +8,11 @@
 import Foundation
 
 final class HomeInteractor: Interactable {
+    var authenticationProvider: AuthenticationProviderProtocol
     typealias PresenterType = HomePresenter
     var presenter: PresenterType?
+    
+    init(authenticationProvider: AuthenticationProviderProtocol) {
+        self.authenticationProvider = authenticationProvider
+    }
 }

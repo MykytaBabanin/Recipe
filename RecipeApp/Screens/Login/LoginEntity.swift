@@ -16,7 +16,3 @@ enum FieldType {
     case username
     case password
 }
-
-enum Error {
-    case invalidCredentials(fieldType: FieldType)
-}

@@ -6,18 +6,38 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 enum AuthenticationError {
     case userNameError
     case passwordError
 }
 
+struct AuthenticationErrors: Error {
+    let errors: [AuthenticationError]
+}
+
 final class LoginInteractor: Interactable {
+    var authenticationProvider: AuthenticationProviderProtocol
     typealias PresenterType = LoginPresenter
     
     var presenter: PresenterType?
     
-    func authenticateUser(username: String, password: String) -> [AuthenticationError]? {
+    init(authenticationProvider: AuthenticationProviderProtocol) {
+        self.authenticationProvider = authenticationProvider
+    }
+    
+    func handleAuthentication(username: String, password: String) async throws -> AuthDataResult {
+        let errors = validateCredentials(username: username, password: password)
+        
+        guard errors.isEmpty else {
+            throw AuthenticationErrors(errors: errors)
+        }
+        
+        return try await authenticationProvider.signIn(email: username, password: password)
+    }
+    
+    func validateCredentials(username: String, password: String) -> [AuthenticationError] {
         var errors: [AuthenticationError] = []
         
         if isValidUsername(username: username) {

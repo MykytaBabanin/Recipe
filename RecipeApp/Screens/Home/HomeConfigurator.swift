@@ -9,7 +9,9 @@ import Foundation
 
 final class HomeConfigurator {
     static func build() -> HomeView {
-        let interactor = HomeInteractor()
+        let authenticationProvider = FirebaseAuthenticationProvider()
+        let interactor = HomeInteractor(authenticationProvider: authenticationProvider)
+        
         let router = HomeRouter()
         let presenter = HomePresenter()
         let view = HomeView()

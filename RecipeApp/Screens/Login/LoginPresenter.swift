@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 final class LoginPresenter: Presentable {
     typealias ViewType = LoginView
@@ -24,23 +25,28 @@ final class LoginPresenter: Presentable {
         router?.navigateRegistration()
     }
     
-    func authenticate(username: String, password: String) {
-        guard let authenticationResult = interactor?.authenticateUser(username: username, password: password) else { return }
-        
-        if authenticationResult.isEmpty {
-            successfullAuthentication()
-        } else {
-            failureAuthentication(errors: authenticationResult)
+    func authenticate(email: String, password: String) {
+        Task {
+            do {
+                guard let result = try await interactor?.handleAuthentication(username: email, password: password) else { return }
+                DispatchQueue.main.async {
+                    self.successfullAuthentication()
+                }
+            } catch let errors as AuthenticationErrors {
+                DispatchQueue.main.async {
+                    self.failureAuthentication(errors: errors)
+                }
+            }
         }
     }
-    
+        
     private func successfullAuthentication() {
         UserDefaults.standard.set(true, forKey: LoginConstants.isLoggedIn)
         view?.successfullyValidateFields()
         router?.navigateHome()
     }
     
-    private func failureAuthentication(errors: [AuthenticationError]) {
+    private func failureAuthentication(errors: AuthenticationErrors) {
         view?.checkValidation(errors)
     }
 }
