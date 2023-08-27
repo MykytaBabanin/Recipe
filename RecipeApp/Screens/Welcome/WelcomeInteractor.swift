@@ -7,12 +7,7 @@
 
 import Foundation
 
-final class WelcomeInteractor: Interactable {
-    var authenticationProvider: AuthenticationProviderProtocol
+final class WelcomeInteractor {
     typealias PresenterType = WelcomePresenter
     var presenter: PresenterType?
-    
-    init(authenticationProvider: AuthenticationProviderProtocol) {
-        self.authenticationProvider = authenticationProvider
-    }
 }

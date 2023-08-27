@@ -7,12 +7,6 @@
 
 import Foundation
 
-final class HomePresenter: Presentable {
-    typealias ViewType = HomeView
-    typealias InteractorType = HomeInteractor
-    typealias RouterType = HomeRouter
+final class HomePresenter {
     
-    var view: ViewType?
-    var interactor: InteractorType?
-    var router: RouterType?
 }

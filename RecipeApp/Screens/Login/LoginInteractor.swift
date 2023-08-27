@@ -16,44 +16,62 @@ struct AuthenticationErrors: Error {
     let errors: [AuthenticationError]
 }
 
-final class LoginInteractor: Interactable {
-    var authenticationProvider: AuthenticationProviderProtocol
-    typealias PresenterType = LoginPresenter
+struct AuthorisedUser {
+    let userId: String
+    let username: String
+    let password: String
+}
+
+protocol LoginInteractorProtocol {
+    var presenter: LoginPresenterProtocol? { get set }
+    func handleAuthentication(user: AuthorisedUser) async throws
+}
+
+final class LoginInteractor: LoginInteractorProtocol {
+    private let authenticationProvider: AuthenticationProviderProtocol
     
-    var presenter: PresenterType?
+    var presenter: LoginPresenterProtocol?
     
-    init(authenticationProvider: AuthenticationProviderProtocol) {
+    init(authenticationProvider: AuthenticationProviderProtocol, presenter: LoginPresenterProtocol) {
         self.authenticationProvider = authenticationProvider
+        self.presenter = presenter
     }
     
-    func handleAuthentication(username: String, password: String) async throws {
-        let validationErrors = validateCredentials(username: username, password: password)
+    func handleAuthentication(user: AuthorisedUser) async throws {
+        let validationErrors = validateCredentials(username: user.username, password: user.password)
         
         guard validationErrors.isEmpty else {
             throw AuthenticationErrors(errors: validationErrors)
         }
-        try await authenticationProvider.signIn(email: username, password: password)
+        let userResult = try await authenticationProvider.signIn(email: user.username, password: user.password)
+        
+        let authorisedUser = AuthorisedUser(userId: userResult.user.uid,
+                                            username: userResult.user.email ?? "Unknown",
+                                            password: user.password)
+        print(authorisedUser)
     }
-    
+}
+
+private extension LoginInteractor {
     func validateCredentials(username: String, password: String) -> [AuthenticationError] {
         var errors: [AuthenticationError] = []
         
-        if isValidUsername(username: username) {
+        if !isValidUsername(username: username) {
             errors.append(.userNameError)
         }
         
-        if isValidPassword(password: password) {
+        if !isValidPassword(password: password) {
             errors.append(.passwordError)
         }
         
         return errors
     }
     
-    private func isValidUsername(username: String) -> Bool {
-        return username.count < 4
+    func isValidUsername(username: String) -> Bool {
+        return username.validateEmail()
     }
     
-    private func isValidPassword(password: String) -> Bool {
-        return password.count < 8
+    func isValidPassword(password: String) -> Bool {
+        return password.validatePassword()
     }
 }

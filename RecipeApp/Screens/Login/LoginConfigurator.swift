@@ -10,12 +10,21 @@ import Foundation
 final class LoginConfigurator {
     static func build() -> LoginView {
         let authenticationProvider = FirebaseAuthenticationProvider()
-        let interactor = LoginInteractor(authenticationProvider: authenticationProvider)
-        
-        let router = LoginRouter()
-        let presenter = LoginPresenter()
+        var presenter: LoginPresenterProtocol = LoginPresenter()
+        let interactor = LoginInteractor(authenticationProvider: authenticationProvider, presenter: presenter)
         let view = LoginView()
+        var router: LoginRouterProtocol = LoginRouter(view: view)
         
-        return ModuleBuilder.build(view: view, presenter: presenter, interactor: interactor, router: router)
+        view.presenter = presenter
+        
+        presenter.interactor = interactor
+        presenter.router = router
+        presenter.view = view
+        
+        interactor.presenter = presenter
+        
+        router.view = view
+        
+        return view
     }
 }

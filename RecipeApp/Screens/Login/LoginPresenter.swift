@@ -8,27 +8,34 @@
 import Foundation
 import FirebaseAuth
 
-final class LoginPresenter: Presentable {
-    typealias ViewType = LoginView
-    typealias InteractorType = LoginInteractor
-    typealias RouterType = LoginRouter
+protocol LoginPresenterProtocol {
+    var view: LoginView? { get set }
+    var interactor: LoginInteractorProtocol? { get set }
+    var router: LoginRouterProtocol? { get set }
     
-    var view: ViewType?
-    var interactor: InteractorType?
-    var router: RouterType?
+    func navigateRegistration()
+    func authenticate(user: AuthorisedUser)
+}
+
+final class LoginPresenter: LoginPresenterProtocol {
+    var view: LoginView?
+    var interactor: LoginInteractorProtocol?
+    var router: LoginRouterProtocol?
     
-    func disableBackButton() {
-        router?.disableBackButton()
+    init(view: LoginView? = nil, interactor: LoginInteractorProtocol? = nil, router: LoginRouterProtocol? = nil) {
+        self.view = view
+        self.interactor = interactor
+        self.router = router
     }
-    
+
     func navigateRegistration() {
         router?.navigateRegistration()
     }
     
-    func authenticate(email: String, password: String) {
+    func authenticate(user: AuthorisedUser) {
         Task {
             do {
-                try await interactor?.handleAuthentication(username: email, password: password)
+                try await interactor?.handleAuthentication(user: user)
                 DispatchQueue.main.async {
                     self.successfullAuthentication()
                 }

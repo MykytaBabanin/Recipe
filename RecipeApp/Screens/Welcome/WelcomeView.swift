@@ -25,10 +25,8 @@ private struct Constants {
 private typealias ImageStyle = Welcome.Image
 private typealias ButtonStyle = Welcome.Button
 
-final class WelcomeView: UIViewController, Viewable {
-    typealias PresenterType = WelcomePresenter
-    
-    var presenter: PresenterType?
+final class WelcomeView: UIViewController {
+    var presenter: WelcomePresenter?
     
     //MARK: Як не робити постійне присвоєння до view
     private lazy var backgroundImageView: UIImageView = {

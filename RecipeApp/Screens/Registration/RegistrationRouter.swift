@@ -7,14 +7,12 @@
 
 import Foundation
 
-final class RegistrationRouter: Routable {    
-    typealias ViewType = RegistrationView
-    
-    var view: ViewType?
-    
-    func disableBackButton() {
-        view?.navigationItem.hidesBackButton = true
-    }
+protocol RegistrationRouterProtocol {
+    var view: RegistrationView? { get }
+}
+
+final class RegistrationRouter: RegistrationRouterProtocol {
+    var view: RegistrationView?
     
     func navigateLogin() {
         view?.navigationController?.popViewController(animated: true)

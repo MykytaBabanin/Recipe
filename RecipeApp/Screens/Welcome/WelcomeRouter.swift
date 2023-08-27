@@ -7,13 +7,16 @@
 
 import Foundation
 
-final class WelcomeRouter: Routable {
-    typealias ViewType = WelcomeView
-    weak var view: ViewType?
-    
+protocol WelcomeRouterProtocol {
+    var view: WelcomeView? { get }
+    func navigateLogin()
+}
+
+final class WelcomeRouter: WelcomeRouterProtocol {
+    var view: WelcomeView?
+
     func navigateLogin() {
         let loginModule = LoginConfigurator.build()
-        loginModule.presenter?.disableBackButton()
         view?.navigationController?.pushViewController(loginModule, animated: true)
     }
 }

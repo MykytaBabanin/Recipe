@@ -8,10 +8,14 @@
 import Foundation
 import FirebaseAuth
 
-final class RegistrationInteractor: Interactable {
-    var authenticationProvider: AuthenticationProviderProtocol
-    typealias PresenterType = RegistrationPresenter
-    var presenter: PresenterType?
+protocol RegistrationInteractorProtocol {
+    var presenter: RegistrationPresenter? { get }
+}
+
+struct RegisteredUser {}
+
+final class RegistrationInteractor {
+    private let authenticationProvider: AuthenticationProviderProtocol
     
     init(authenticationProvider: AuthenticationProviderProtocol) {
         self.authenticationProvider = authenticationProvider

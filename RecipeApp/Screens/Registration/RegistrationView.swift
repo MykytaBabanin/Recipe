@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import FirebaseAuth
 
-final class RegistrationView: UIViewController, Viewable {
+final class RegistrationView: UIViewController {
     typealias PresenterType = RegistrationPresenter
     var presenter: PresenterType?
     

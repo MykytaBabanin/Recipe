@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-final class HomeView: UIViewController, Viewable {
+final class HomeView: UIViewController {
     typealias PresenterType = HomePresenter
     var presenter: PresenterType?
     

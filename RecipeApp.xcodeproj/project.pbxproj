@@ -23,8 +23,6 @@
 		BBA2962C2A86316C004996DE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2962B2A86316C004996DE /* WelcomeView.swift */; };
 		BBA2962E2A864CA6004996DE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */; };
 		BBA296342A866997004996DE /* WelcomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296332A866997004996DE /* WelcomeConfigurator.swift */; };
-		BBA296382A866E72004996DE /* ModuleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296372A866E72004996DE /* ModuleProtocols.swift */; };
-		BBA2963A2A866ED3004996DE /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296392A866ED3004996DE /* ModuleBuilder.swift */; };
 		BBCD56E22A914AB400F9BF61 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E12A914AB400F9BF61 /* HomeEntity.swift */; };
 		BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */; };
 		BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */; };
@@ -42,6 +40,8 @@
 		BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD57022A94C78800F9BF61 /* FirebaseAuth */; };
 		BBCD57052A94C78800F9BF61 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD57042A94C78800F9BF61 /* FirebaseDatabaseSwift */; };
 		BBCD57082A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */; };
+		BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD570A2A94F7FF00F9BF61 /* Lottie */; };
+		BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */; };
 		BBD3F36B2A8183BC00369CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */; };
 		BBD3F36D2A8183BC00369CB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */; };
 		BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36E2A8183BC00369CB2 /* LoginView.swift */; };
@@ -71,8 +71,6 @@
 		BBA2962B2A86316C004996DE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		BBA296332A866997004996DE /* WelcomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeConfigurator.swift; sourceTree = "<group>"; };
-		BBA296372A866E72004996DE /* ModuleProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleProtocols.swift; sourceTree = "<group>"; };
-		BBA296392A866ED3004996DE /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		BBCD56E12A914AB400F9BF61 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
 		BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
@@ -88,6 +86,7 @@
 		BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutHelper.swift; sourceTree = "<group>"; };
 		BBCD56FF2A94C34500F9BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationProvider.swift; sourceTree = "<group>"; };
+		BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BBD3F3672A8183BC00369CB2 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 			files = (
 				BBCD57052A94C78800F9BF61 /* FirebaseDatabaseSwift in Frameworks */,
 				BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */,
+				BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,8 +144,6 @@
 		BBA296352A866E55004996DE /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				BBA296372A866E72004996DE /* ModuleProtocols.swift */,
-				BBA296392A866ED3004996DE /* ModuleBuilder.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -191,6 +189,19 @@
 				BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		BBCD570C2A9B315800F9BF61 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BBD3F3882A81894000369CB2 /* UIView+Extensions.swift */,
+				BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */,
+				BBCD56EF2A91566A00F9BF61 /* UiControl+Extensions.swift */,
+				BBCD56F32A949A0300F9BF61 /* UIButton+Extensions.swift */,
+				BBCD56F52A94A02000F9BF61 /* UILabel+Extensions.swift */,
+				BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BBD3F35E2A8183BC00369CB2 = {
@@ -242,13 +253,9 @@
 		BBD3F38B2A818BDF00369CB2 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				BBCD570C2A9B315800F9BF61 /* Extensions */,
 				BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */,
 				BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */,
-				BBD3F3882A81894000369CB2 /* UIView+Extensions.swift */,
-				BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */,
-				BBCD56EF2A91566A00F9BF61 /* UiControl+Extensions.swift */,
-				BBCD56F32A949A0300F9BF61 /* UIButton+Extensions.swift */,
-				BBCD56F52A94A02000F9BF61 /* UILabel+Extensions.swift */,
 				BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */,
 			);
 			path = Helper;
@@ -273,6 +280,7 @@
 			packageProductDependencies = (
 				BBCD57022A94C78800F9BF61 /* FirebaseAuth */,
 				BBCD57042A94C78800F9BF61 /* FirebaseDatabaseSwift */,
+				BBCD570A2A94F7FF00F9BF61 /* Lottie */,
 			);
 			productName = RecipeApp;
 			productReference = BBD3F3672A8183BC00369CB2 /* RecipeApp.app */;
@@ -304,6 +312,7 @@
 			mainGroup = BBD3F35E2A8183BC00369CB2;
 			packageReferences = (
 				BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = BBD3F3682A8183BC00369CB2 /* Products */;
 			projectDirPath = "";
@@ -333,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB34BB972A88C6E3006C2732 /* RegistrationRouter.swift in Sources */,
+				BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */,
 				BB34BB992A88C6EC006C2732 /* RegistrationPresenter.swift in Sources */,
 				BBD3F3832A81853F00369CB2 /* LoginPresenter.swift in Sources */,
 				BBCD57082A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift in Sources */,
@@ -340,7 +350,6 @@
 				BBD3F37F2A81850F00369CB2 /* LoginEntity.swift in Sources */,
 				BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */,
 				BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */,
-				BBA2963A2A866ED3004996DE /* ModuleBuilder.swift in Sources */,
 				BBA2962C2A86316C004996DE /* WelcomeView.swift in Sources */,
 				BBCD56E22A914AB400F9BF61 /* HomeEntity.swift in Sources */,
 				BBA2962A2A863162004996DE /* WelcomeRouter.swift in Sources */,
@@ -362,7 +371,6 @@
 				BBA296212A82EA60004996DE /* LoginConstants.swift in Sources */,
 				BBA2961C2A82E6A2004996DE /* WelcomeStyle.swift in Sources */,
 				BB34BB9D2A88C6FF006C2732 /* RegistrationConfigurator.swift in Sources */,
-				BBA296382A866E72004996DE /* ModuleProtocols.swift in Sources */,
 				BBCD56F82A94A80900F9BF61 /* LoginStyle.swift in Sources */,
 				BBCD56F02A91566A00F9BF61 /* UiControl+Extensions.swift in Sources */,
 				BBCD56F62A94A02000F9BF61 /* UILabel+Extensions.swift in Sources */,
@@ -591,6 +599,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -603,6 +619,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
+		};
+		BBCD570A2A94F7FF00F9BF61 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

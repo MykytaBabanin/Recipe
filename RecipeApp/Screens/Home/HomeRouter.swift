@@ -7,7 +7,6 @@
 
 import Foundation
 
-final class HomeRouter: Routable {
-    typealias ViewType = HomeView
-    var view: ViewType?
+final class HomeRouter {
+
 }

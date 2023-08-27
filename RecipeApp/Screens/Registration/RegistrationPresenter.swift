@@ -7,14 +7,19 @@
 
 import Foundation
 
-final class RegistrationPresenter: Presentable {
-    typealias ViewType = RegistrationView
-    typealias InteractorType = RegistrationInteractor
-    typealias RouterType = RegistrationRouter
+protocol RegistrationPresenterProtocol {
+    var view: RegistrationView? { get }
+    var interactor: RegistrationInteractor? { get }
+    var router: RegistrationRouter? { get }
     
-    var view: ViewType?
-    var interactor: InteractorType?
-    var router: RouterType?
+    func registerUser(email: String, password: String) async -> Bool
+    func navigateLogin()
+}
+
+final class RegistrationPresenter: RegistrationPresenterProtocol {
+    var view: RegistrationView?
+    var interactor: RegistrationInteractor?
+    var router: RegistrationRouter?
     
     func registerUser(email: String, password: String) async -> Bool {
         do {
@@ -24,10 +29,6 @@ final class RegistrationPresenter: Presentable {
             print(error.localizedDescription)
             return false
         }
-    }
-    
-    func disableBackButton() {
-        router?.disableBackButton()
     }
     
     func navigateLogin() {

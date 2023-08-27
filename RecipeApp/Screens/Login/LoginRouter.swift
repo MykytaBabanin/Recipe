@@ -8,13 +8,17 @@
 import Foundation
 import UIKit
 
-final class LoginRouter: Routable {
-    typealias ViewType = LoginView
+protocol LoginRouterProtocol {
+    var view: LoginView? { get set }
+    func navigateHome()
+    func navigateRegistration()
+}
+
+final class LoginRouter: LoginRouterProtocol {
+    var view: LoginView?
     
-    weak var view: ViewType?
-    
-    func disableBackButton() {
-        view?.navigationItem.hidesBackButton = true
+    init(view: LoginView?) {
+        self.view = view
     }
     
     func navigateHome() {
@@ -24,7 +28,6 @@ final class LoginRouter: Routable {
     
     func navigateRegistration() {
         let registrationModule = RegistrationConfigurator.build()
-        registrationModule.presenter?.disableBackButton()
         view?.navigationController?.pushViewController(registrationModule, animated: true)
     }
 }

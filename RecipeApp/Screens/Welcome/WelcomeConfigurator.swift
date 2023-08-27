@@ -9,13 +9,19 @@ import Foundation
 
 final class WelcomeConfigurator {
     static func build() -> WelcomeView {
-        let authenticationProvider = FirebaseAuthenticationProvider()
-        let interactor = WelcomeInteractor(authenticationProvider: authenticationProvider)
-        
         let view = WelcomeView()
         let presenter = WelcomePresenter()
+        let interactor = WelcomeInteractor()
         let router = WelcomeRouter()
         
-        return ModuleBuilder.build(view: view, presenter: presenter, interactor: interactor, router: router)
+        view.presenter = presenter
+        
+        presenter.interactor = interactor
+        presenter.router = router
+        presenter.view = view
+            
+        router.view = view
+        
+        return view
     }
 }

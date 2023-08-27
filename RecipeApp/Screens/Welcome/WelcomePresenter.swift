@@ -7,14 +7,10 @@
 
 import Foundation
 
-final class WelcomePresenter: Presentable {
-    typealias ViewType = WelcomeView
-    typealias InteractorType = WelcomeInteractor
-    typealias RouterType = WelcomeRouter
-    
-    var view: ViewType?
-    var interactor: InteractorType?
-    var router: RouterType?
+final class WelcomePresenter {
+    var view: WelcomeView?
+    var interactor: WelcomeInteractor?
+    var router: WelcomeRouter?
     
     
     func navigateLogin() {
