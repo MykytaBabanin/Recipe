@@ -14,18 +14,26 @@ private typealias StackViewStyle = Login.StackView
 
 final class LoginView: UIViewController {
     var presenter: LoginPresenterProtocol?
-    
-    @Published private var authenticationFailure: (username: Bool, password: Bool) = (false, false)
-    
+        
     private let keyboardWillShow = NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
     private let keyboardWillHide = NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
-    private let usernameTextField = UITextField()
-    private let passwordTextField = UITextField()
-    private let contentView = UIView()
-    private var subscriptions = Set<AnyCancellable>()
-    private var loginButton: UIButton = { ButtonStyle.apply(title: "Submit") }()
-    private lazy var loginStackView: UIStackView = { StackViewStyle.apply() }()
     private lazy var registrationButton: UIButton = { ButtonStyle.apply(title: "Registration") }()
+    private lazy var loginStackView: UIStackView = { StackViewStyle.apply() }()
+    private var loginButton: UIButton = { ButtonStyle.apply(title: "Submit") }()
+    private var subscriptions = Set<AnyCancellable>()
+    private let usernameTextField: LabeledTextField = {
+        let textField = LabeledTextField()
+        let viewState = LabeledTextField.ViewState(placeholder: "Enter email", isPassword: false)
+        textField.render(with: viewState)
+        return textField
+    }()
+    private let passwordTextField: LabeledTextField = {
+        let textField = LabeledTextField()
+        let viewState = LabeledTextField.ViewState(placeholder: "Enter password", isPassword: true)
+        textField.render(with: viewState)
+        return textField
+    }()
+    private let contentView = UIView()
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -67,17 +75,20 @@ final class LoginView: UIViewController {
         
         for error in errors.errors {
             switch error {
-            case .userNameError:
-                authenticationFailure.username = true
-            case .passwordError:
-                authenticationFailure.password = true
+            case .userNameError(let error):
+                usernameTextField.subtitle = error
+                usernameTextField.isError = true
+            case .passwordError(let error):
+                passwordTextField.subtitle = error
+                passwordTextField.isError = true
             }
         }
     }
     
+    
     func successfullyValidateFields() {
-        authenticationFailure.username = false
-        authenticationFailure.password = false
+        usernameTextField.isError = false
+        passwordTextField.isError = false
     }
 }
 
@@ -88,7 +99,6 @@ private extension LoginView {
         touchButtonsHandling()
         setupDelegates()
         setupKeyboardHiddingWhileTapOutside()
-        handleAuthenticationFailure()
     }
     
     func setupSubviews() {
@@ -129,29 +139,6 @@ private extension LoginView {
             titleLabel.bottomAnchor.constraint(equalTo: loginStackView.topAnchor, constant: -57),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
         ])
-    }
-    
-    func applyTextFieldStyle(for textField: UITextField,
-                             isError: Bool,
-                             placeholder: String,
-                             isPassword: Bool? = false) {
-        Login.TextField.apply(for: textField,
-                              isError: isError,
-                              placeholder: placeholder,
-                              isPassword: isPassword)
-    }
-    
-    func handleAuthenticationFailure() {
-        $authenticationFailure
-            .sink { [unowned self] failure in
-                applyTextFieldStyle(for: usernameTextField,
-                                    isError: failure.username,
-                                    placeholder: "Enter email")
-                applyTextFieldStyle(for: passwordTextField,
-                                    isError: failure.password,
-                                    placeholder: "Enter password",
-                                    isPassword: true)
-            }.store(in: &subscriptions)
     }
     
     func keyboardWillShowHandling() {

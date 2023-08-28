@@ -42,6 +42,7 @@
 		BBCD57082A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */; };
 		BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD570A2A94F7FF00F9BF61 /* Lottie */; };
 		BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */; };
+		BBCD57112A9C7BB400F9BF61 /* LabeledLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */; };
 		BBD3F36B2A8183BC00369CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */; };
 		BBD3F36D2A8183BC00369CB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */; };
 		BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36E2A8183BC00369CB2 /* LoginView.swift */; };
@@ -87,6 +88,7 @@
 		BBCD56FF2A94C34500F9BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationProvider.swift; sourceTree = "<group>"; };
 		BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledLoginTextField.swift; sourceTree = "<group>"; };
 		BBD3F3672A8183BC00369CB2 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				BBD3F36E2A8183BC00369CB2 /* LoginView.swift */,
 				BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */,
 				BBA296202A82EA60004996DE /* LoginConstants.swift */,
+				BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				BBD3F37F2A81850F00369CB2 /* LoginEntity.swift in Sources */,
 				BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */,
 				BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */,
+				BBCD57112A9C7BB400F9BF61 /* LabeledLoginTextField.swift in Sources */,
 				BBA2962C2A86316C004996DE /* WelcomeView.swift in Sources */,
 				BBCD56E22A914AB400F9BF61 /* HomeEntity.swift in Sources */,
 				BBA2962A2A863162004996DE /* WelcomeRouter.swift in Sources */,

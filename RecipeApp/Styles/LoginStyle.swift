@@ -8,19 +8,6 @@
 import UIKit
 
 enum Login {
-    enum TextField {
-        static func apply(for textField: UITextField,
-                          isError: Bool,
-                          placeholder: String,
-                          isPassword: Bool?) {
-            textField.layer.borderColor = UIColor.red.cgColor
-            textField.layer.borderWidth = isError ? 1 : 0
-            textField.isSecureTextEntry = isPassword ?? false
-            textField.placeholder = placeholder
-            textField.autocapitalizationType = .none
-            textField.borderStyle = .roundedRect
-        }
-    }
     enum Button {
         static func apply(title: String) -> UIButton {
             return UIButton().buildMainAppButton(title: title, backgroundColor: GeneralStyle.mainAppColor, withArrow: true)

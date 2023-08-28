@@ -8,8 +8,8 @@
 import Foundation
 
 enum AuthenticationError {
-    case userNameError
-    case passwordError
+    case userNameError(String)
+    case passwordError(String)
 }
 
 struct AuthenticationErrors: Error {
@@ -38,7 +38,7 @@ final class LoginInteractor: LoginInteractorProtocol {
     }
     
     func handleAuthentication(user: AuthorisedUser) async throws {
-        let validationErrors = validateCredentials(username: user.username, password: user.password)
+        let validationErrors = validateCredentials(user: user)
         
         guard validationErrors.isEmpty else {
             throw AuthenticationErrors(errors: validationErrors)
@@ -53,25 +53,17 @@ final class LoginInteractor: LoginInteractorProtocol {
 }
 
 private extension LoginInteractor {
-    func validateCredentials(username: String, password: String) -> [AuthenticationError] {
+    func validateCredentials(user: AuthorisedUser) -> [AuthenticationError] {
         var errors: [AuthenticationError] = []
         
-        if !isValidUsername(username: username) {
-            errors.append(.userNameError)
+        if !user.username.isEmailValid() {
+            errors.append(.userNameError(user.username.validateEmail()))
         }
         
-        if !isValidPassword(password: password) {
-            errors.append(.passwordError)
+        if !user.password.isPasswordValid() {
+            errors.append(.passwordError(user.password.validatePassword()))
         }
         
         return errors
-    }
-    
-    func isValidUsername(username: String) -> Bool {
-        return username.validateEmail()
-    }
-    
-    func isValidPassword(password: String) -> Bool {
-        return password.validatePassword()
     }
 }
