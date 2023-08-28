@@ -110,7 +110,15 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
     }
     
     func successfullyValidateFields(error: Error? = nil) {
-        let alert = UIAlertController(title: "Registration Error", message: error?.localizedDescription, preferredStyle: .alert)
+        if let error = error {
+            callValidationAlert(with: error)
+        } else {
+            [nameTextField, emailTextField, passwordTextField, confirmationPasswordTextField].forEach { $0.isError = false }
+        }
+    }
+    
+    private func callValidationAlert(with error: Error) {
+        let alert = UIAlertController(title: "Registration Error", message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel)
         alert.addAction(action)
         self.present(alert, animated: true)
