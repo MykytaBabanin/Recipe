@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func isLoggedInView() -> UIViewController{
-        isLoggedIn ? HomeConfigurator.build() : WelcomeConfigurator.build()
+        isLoggedIn ? HomeConfigurator.build() : WelcomeConfigurator.build() as! UIViewController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

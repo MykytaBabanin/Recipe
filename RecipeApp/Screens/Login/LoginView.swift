@@ -12,7 +12,15 @@ private typealias ButtonStyle = Login.Button
 private typealias TitleStyle = Login.Title
 private typealias StackViewStyle = Login.StackView
 
-final class LoginView: UIViewController {
+protocol LoginViewProtocol: AnyObject {
+    var presenter: LoginPresenterProtocol? { get set }
+    var navigationController: UINavigationController? { get }
+    
+    func checkValidation(_ errors: AuthenticationErrors)
+    func successfullyValidateFields()
+}
+
+final class LoginView: UIViewController, LoginViewProtocol {
     var presenter: LoginPresenterProtocol?
         
     private let keyboardWillShow = NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)

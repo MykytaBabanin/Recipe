@@ -8,8 +8,8 @@
 import Foundation
 import FirebaseAuth
 
-protocol LoginPresenterProtocol {
-    var view: LoginView? { get set }
+protocol LoginPresenterProtocol: AnyObject {
+    var view: LoginViewProtocol? { get set }
     var interactor: LoginInteractorProtocol? { get set }
     var router: LoginRouterProtocol? { get set }
     
@@ -18,15 +18,9 @@ protocol LoginPresenterProtocol {
 }
 
 final class LoginPresenter: LoginPresenterProtocol {
-    var view: LoginView?
+    var view: LoginViewProtocol?
     var interactor: LoginInteractorProtocol?
     var router: LoginRouterProtocol?
-    
-    init(view: LoginView? = nil, interactor: LoginInteractorProtocol? = nil, router: LoginRouterProtocol? = nil) {
-        self.view = view
-        self.interactor = interactor
-        self.router = router
-    }
 
     func navigateRegistration() {
         router?.navigateRegistration()

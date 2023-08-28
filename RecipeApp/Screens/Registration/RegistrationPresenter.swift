@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RegistrationPresenterProtocol {
+protocol RegistrationPresenterProtocol: AnyObject {
     var view: RegistrationView? { get }
     var interactor: RegistrationInteractor? { get }
     var router: RegistrationRouter? { get }

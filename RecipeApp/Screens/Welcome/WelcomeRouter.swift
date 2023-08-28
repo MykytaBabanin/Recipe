@@ -5,18 +5,20 @@
 //  Created by Mykyta Babanin on 11.08.2023.
 //
 
-import Foundation
+import UIKit
 
-protocol WelcomeRouterProtocol {
-    var view: WelcomeView? { get }
+protocol WelcomeRouterProtocol: AnyObject {
+    var view: WelcomeViewProtocol? { get }
     func navigateLogin()
 }
 
 final class WelcomeRouter: WelcomeRouterProtocol {
-    var view: WelcomeView?
+    var view: WelcomeViewProtocol?
 
     func navigateLogin() {
         let loginModule = LoginConfigurator.build()
-        view?.navigationController?.pushViewController(loginModule, animated: true)
+        if let loginModuleVC = loginModule as? UIViewController {
+            view?.navigationController?.pushViewController(loginModuleVC, animated: true)
+        }
     }
 }

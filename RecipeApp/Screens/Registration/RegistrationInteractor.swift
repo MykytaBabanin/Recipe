@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-protocol RegistrationInteractorProtocol {
+protocol RegistrationInteractorProtocol: AnyObject {
     var presenter: RegistrationPresenter? { get }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 final class WelcomePresenter {
-    var view: WelcomeView?
+    var view: WelcomeViewProtocol?
     var interactor: WelcomeInteractor?
     var router: WelcomeRouter?
     

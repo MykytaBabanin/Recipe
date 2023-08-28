@@ -8,18 +8,14 @@
 import Foundation
 import UIKit
 
-protocol LoginRouterProtocol {
-    var view: LoginView? { get set }
+protocol LoginRouterProtocol: AnyObject {
+    var view: LoginViewProtocol? { get set }
     func navigateHome()
     func navigateRegistration()
 }
 
 final class LoginRouter: LoginRouterProtocol {
-    var view: LoginView?
-    
-    init(view: LoginView?) {
-        self.view = view
-    }
+    var view: LoginViewProtocol?
     
     func navigateHome() {
         let homeModule = HomeConfigurator.build()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RegistrationRouterProtocol {
+protocol RegistrationRouterProtocol: AnyObject {
     var view: RegistrationView? { get }
 }
 

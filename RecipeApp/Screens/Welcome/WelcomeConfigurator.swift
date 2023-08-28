@@ -8,8 +8,8 @@
 import Foundation
 
 final class WelcomeConfigurator {
-    static func build() -> WelcomeView {
-        let view = WelcomeView()
+    static func build() -> WelcomeViewProtocol {
+        let view: WelcomeViewProtocol = WelcomeView()
         let presenter = WelcomePresenter()
         let interactor = WelcomeInteractor()
         let router = WelcomeRouter()

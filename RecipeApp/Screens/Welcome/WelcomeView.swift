@@ -25,10 +25,14 @@ private struct Constants {
 private typealias ImageStyle = Welcome.Image
 private typealias ButtonStyle = Welcome.Button
 
-final class WelcomeView: UIViewController {
+protocol WelcomeViewProtocol: AnyObject {
+    var presenter: WelcomePresenter? { get set }
+    var navigationController: UINavigationController? { get }
+}
+
+final class WelcomeView: UIViewController, WelcomeViewProtocol {
     var presenter: WelcomePresenter?
     
-    //MARK: Як не робити постійне присвоєння до view
     private lazy var backgroundImageView: UIImageView = {
         ImageStyle.apply(for: view, withImage: Constants.ImagePathConstants.backgroundImage)
     }()
@@ -79,7 +83,6 @@ final class WelcomeView: UIViewController {
             
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.LayoutConstants.startButtonBottomOffset),
-            //MARK: Чи гарний підхід юзати multiplier для адаптивної верстки на інакших екранах???
             startButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
             startButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.07),
             

@@ -22,7 +22,7 @@ struct AuthorisedUser {
     let password: String
 }
 
-protocol LoginInteractorProtocol {
+protocol LoginInteractorProtocol: AnyObject {
     var presenter: LoginPresenterProtocol? { get set }
     func handleAuthentication(user: AuthorisedUser) async throws
 }
