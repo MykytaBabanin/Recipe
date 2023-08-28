@@ -8,11 +8,35 @@
 import Foundation
 
 extension String {
+    func isEmailValid() -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: self)
+    }
+    
+    func isUsernameValid() -> Bool {
+        let usernameRegex = "^[a-zA-Z ]{2,}$"
+        
+        let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegex)
+        return usernameTest.evaluate(with: self)
+    }
+    
     func isPasswordValid() -> Bool {
         let passwordRegex = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{8,}$"
-
+        
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordTest.evaluate(with: self)
+    }
+    
+    func validateUsername() -> String {
+        var message = ""
+        
+        if !NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z ]{2,}$").evaluate(with: self) {
+            message = "Password must be at least 2 characters"
+        }
+        
+        return message
     }
     
     func validatePassword() -> String {
@@ -35,13 +59,6 @@ extension String {
           }
 
           return message
-    }
-    
-    func isEmailValid() -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return passwordTest.evaluate(with: self)
     }
     
     func validateEmail() -> String {

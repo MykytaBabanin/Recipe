@@ -81,12 +81,14 @@ final class LoginView: UIViewController, LoginViewProtocol {
     func checkValidation(_ errors: AuthenticationErrors) {
         successfullyValidateFields()
         
-        for error in errors.errors {
+        errors.errors.forEach { [weak self] error in
+            guard let self = self else { return }
+            
             switch error {
-            case .userNameError(let error):
+            case .username(let error):
                 usernameTextField.subtitle = error
                 usernameTextField.isError = true
-            case .passwordError(let error):
+            case .password(let error):
                 passwordTextField.subtitle = error
                 passwordTextField.isError = true
             }

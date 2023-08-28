@@ -8,8 +8,23 @@
 import Foundation
 
 final class RegistrationConfigurator {
-    static func build() -> RegistrationView {
-        let view = RegistrationView()
+    static func build() -> RegistrationViewProtocol {
+        let view: RegistrationViewProtocol = RegistrationView()
+        let authenticationProvider = FirebaseAuthenticationProvider()
+        let interactor: RegistrationInteractorProtocol = RegistrationInteractor(authenticationProvider: authenticationProvider)
+        let router: RegistrationRouterProtocol = RegistrationRouter()
+        let presenter: RegistrationPresenterProtocol = RegistrationPresenter()
+        
+        view.presenter = presenter
+        
+        presenter.interactor = interactor
+        presenter.router = router
+        presenter.view = view
+        
+        interactor.presenter = presenter
+        
+        router.view = view
+        
         return view
     }
 }

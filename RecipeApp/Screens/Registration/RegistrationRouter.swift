@@ -8,11 +8,12 @@
 import Foundation
 
 protocol RegistrationRouterProtocol: AnyObject {
-    var view: RegistrationView? { get }
+    var view: RegistrationViewProtocol? { get set }
+    func navigateLogin()
 }
 
 final class RegistrationRouter: RegistrationRouterProtocol {
-    var view: RegistrationView?
+    var view: RegistrationViewProtocol?
     
     func navigateLogin() {
         view?.navigationController?.popViewController(animated: true)

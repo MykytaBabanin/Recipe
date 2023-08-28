@@ -45,6 +45,7 @@ class LabeledTextField: UIView {
     private func changeState() {
         if isError {
             textField.layer.borderWidth = 1
+            textField.layer.cornerRadius = 5
             
             subtitleLabel.textColor = .red
             subtitleLabel.text = subtitle
@@ -80,22 +81,17 @@ class LabeledTextField: UIView {
     private func setupUI() {
         self.addSubviewAndDisableAutoresizing(stackView)
         
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-        ])
+        stackView.pin(toEdges: self)
         
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 4
             
         subtitleLabel.font = .systemFont(ofSize: 10)
         subtitleLabel.numberOfLines = 1
         
         textField.autocapitalizationType = .none
-        textField.borderStyle = .roundedRect
         textField.layer.borderColor = UIColor.red.cgColor
+        textField.borderStyle = .roundedRect
         
         stackView.addArrangedSubview(textField)
         stackView.addArrangedSubview(subtitleLabel)

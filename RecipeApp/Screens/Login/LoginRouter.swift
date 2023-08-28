@@ -24,6 +24,6 @@ final class LoginRouter: LoginRouterProtocol {
     
     func navigateRegistration() {
         let registrationModule = RegistrationConfigurator.build()
-        view?.navigationController?.pushViewController(registrationModule, animated: true)
+        view?.navigationController?.pushViewController(registrationModule as! UIViewController, animated: true)
     }
 }

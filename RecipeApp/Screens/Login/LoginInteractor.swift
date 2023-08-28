@@ -8,8 +8,8 @@
 import Foundation
 
 enum AuthenticationError {
-    case userNameError(String)
-    case passwordError(String)
+    case username(String)
+    case password(String)
 }
 
 struct AuthenticationErrors: Error {
@@ -57,11 +57,11 @@ private extension LoginInteractor {
         var errors: [AuthenticationError] = []
         
         if !user.username.isEmailValid() {
-            errors.append(.userNameError(user.username.validateEmail()))
+            errors.append(.username(user.username.validateEmail()))
         }
         
         if !user.password.isPasswordValid() {
-            errors.append(.passwordError(user.password.validatePassword()))
+            errors.append(.password(user.password.validatePassword()))
         }
         
         return errors
