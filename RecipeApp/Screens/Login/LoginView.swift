@@ -17,6 +17,7 @@ protocol LoginViewProtocol: AnyObject {
     var navigationController: UINavigationController? { get }
     
     func checkValidation(_ errors: AuthenticationErrors)
+    func presentFailureAuthenticationAlert(with error: Error)
     func successfullyValidateFields()
 }
 
@@ -99,6 +100,13 @@ final class LoginView: UIViewController, LoginViewProtocol {
     func successfullyValidateFields() {
         usernameTextField.isError = false
         passwordTextField.isError = false
+    }
+    
+    func presentFailureAuthenticationAlert(with error: Error) {
+        let alert = UIAlertController(title: "Authentication Error", message: error.localizedDescription, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel)
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
 }
 

@@ -7,6 +7,10 @@
 
 import Foundation
 
-final class HomeInteractor {
-    var presenter: HomeInteractor?
+protocol HomeInteractorProtocol: AnyObject {
+    var presenter: HomePresenterProtocol? { get set }
+}
+
+final class HomeInteractor: HomeInteractorProtocol {    
+    var presenter: HomePresenterProtocol?
 }

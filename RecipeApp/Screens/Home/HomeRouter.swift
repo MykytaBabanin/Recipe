@@ -7,6 +7,12 @@
 
 import Foundation
 
-final class HomeRouter {
+protocol HomeRouterProtocol: AnyObject {
+    var view: HomeViewProtocol? { get set }
+}
+
+final class HomeRouter: HomeRouterProtocol {
+    var view: HomeViewProtocol?
+    
 
 }

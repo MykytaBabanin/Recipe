@@ -35,12 +35,12 @@ final class LoginPresenter: LoginPresenterProtocol {
                 }
             } catch let errors as AuthenticationErrors {
                 DispatchQueue.main.async {
-                    self.failureAuthentication(errors: errors)
+                    self.failureFieldsValidation(errors: errors)
                 }
             } catch {
                 DispatchQueue.main.async {
                     print(error.localizedDescription)
-                    self.view?.successfullyValidateFields()
+                    self.failureAuthentication(error: error)
                 }
             }
         }
@@ -52,7 +52,11 @@ final class LoginPresenter: LoginPresenterProtocol {
         router?.navigateHome()
     }
     
-    private func failureAuthentication(errors: AuthenticationErrors) {
+    private func failureAuthentication(error: Error) {
+        view?.presentFailureAuthenticationAlert(with: error)
+    }
+    
+    private func failureFieldsValidation(errors: AuthenticationErrors) {
         view?.checkValidation(errors)
     }
 }

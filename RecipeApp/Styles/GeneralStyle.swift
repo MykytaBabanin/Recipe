@@ -10,4 +10,5 @@ import UIKit
 struct GeneralStyle {
     static let mainAppColor = UIColor(hex: "#129575")
     static let whiteColor = UIColor(hex: "#FFFFFF")
+    static let mainBackgroundColor = UIColor(hex: "#DBDFEA")
 }

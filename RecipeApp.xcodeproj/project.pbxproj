@@ -43,6 +43,7 @@
 		BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD570A2A94F7FF00F9BF61 /* Lottie */; };
 		BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */; };
 		BBCD57112A9C7BB400F9BF61 /* LabeledLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */; };
+		BBCD57142A9E0D2C00F9BF61 /* SETabView in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD57132A9E0D2C00F9BF61 /* SETabView */; };
 		BBD3F36B2A8183BC00369CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */; };
 		BBD3F36D2A8183BC00369CB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */; };
 		BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F36E2A8183BC00369CB2 /* LoginView.swift */; };
@@ -111,6 +112,7 @@
 				BBCD57052A94C78800F9BF61 /* FirebaseDatabaseSwift in Frameworks */,
 				BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */,
 				BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */,
+				BBCD57142A9E0D2C00F9BF61 /* SETabView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +286,7 @@
 				BBCD57022A94C78800F9BF61 /* FirebaseAuth */,
 				BBCD57042A94C78800F9BF61 /* FirebaseDatabaseSwift */,
 				BBCD570A2A94F7FF00F9BF61 /* Lottie */,
+				BBCD57132A9E0D2C00F9BF61 /* SETabView */,
 			);
 			productName = RecipeApp;
 			productReference = BBD3F3672A8183BC00369CB2 /* RecipeApp.app */;
@@ -316,6 +319,7 @@
 			packageReferences = (
 				BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				BBCD57122A9E0D2C00F9BF61 /* XCRemoteSwiftPackageReference "SETabView" */,
 			);
 			productRefGroup = BBD3F3682A8183BC00369CB2 /* Products */;
 			projectDirPath = "";
@@ -611,6 +615,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		BBCD57122A9E0D2C00F9BF61 /* XCRemoteSwiftPackageReference "SETabView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/eshwavin/SETabView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -628,6 +640,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		BBCD57132A9E0D2C00F9BF61 /* SETabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBCD57122A9E0D2C00F9BF61 /* XCRemoteSwiftPackageReference "SETabView" */;
+			productName = SETabView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
