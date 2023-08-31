@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginRouterProtocol: AnyObject {
     var view: LoginViewProtocol? { get set }
+    
     func navigateHome()
     func navigateRegistration()
 }

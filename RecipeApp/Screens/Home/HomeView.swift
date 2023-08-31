@@ -6,30 +6,24 @@
 //
 
 import UIKit
-import SETabView
+import PhotosUI
 
 protocol HomeViewProtocol: AnyObject {
     var presenter: HomePresenterProtocol? { get set }
+    var navigationController: UINavigationController? { get }
 }
 
-final class HomeView: SETabViewController, HomeViewProtocol {
+final class HomeView: UITabBarController, HomeViewProtocol, HomeHeaderViewDelegate, HomeSearchDelegate {
     var presenter: HomePresenterProtocol?
     
-    private let welcomeTitle: UILabel = {
-        let label = UILabel()
-        label.text = "Hello Jega"
-        return label
+    private lazy var homeHeaderView: HomeHeaderView = {
+        let view = HomeHeaderView(frame: .zero)
+        return view
     }()
     
-    private let welcomeSubtitle: UILabel = {
-        let label = UILabel()
-        label.text = "What are you cooking today?"
-        return label
-    }()
-    
-    private let searchRecipe: UISearchBar = {
-        let searchBar = UISearchBar()
-        return searchBar
+    private lazy var homeSearchView: HomeSearchView = {
+        let view = HomeSearchView()
+        return view
     }()
     
     private let filterButton: UIButton = {
@@ -38,29 +32,48 @@ final class HomeView: SETabViewController, HomeViewProtocol {
     }()
     
     private let segmentedControl: UISegmentedControl = {
-       let segmentedControl = UISegmentedControl()
+        let segmentedControl = UISegmentedControl()
         return segmentedControl
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = GeneralStyle.mainBackgroundColor
-        setupTabBar()
+        view.backgroundColor = .white
+        viewControllers = setupTabBarItems()
+        setupSubviews()
+        setupAutoLayout()
+        
+        homeHeaderView.delegate = self
+        homeSearchView.delegate = self
+    }
+    
+    func presentPicker(_ picker: PHPickerViewController) {
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func openFilterSearch() {
+        presenter?.openFilterSearchView()
     }
 }
 
 private extension HomeView {
-    func addSubview() {
-        
+    func setupSubviews() {
+        view.addSubviewAndDisableAutoresizing(homeHeaderView)
+        view.addSubviewAndDisableAutoresizing(homeSearchView)
+        view.addSubviewAndDisableAutoresizing(filterButton)
+        view.addSubviewAndDisableAutoresizing(segmentedControl)
     }
     
-    func setupTabBar() {
-        setViewControllers(setupTabBarItems())
-        setTabColors(backgroundColor: .white,
-                     ballColor: .clear,
-                     tintColor: GeneralStyle.mainAppColor,
-                     unselectedItemTintColor: .gray,
-                     barTintColor: .clear)
+    func setupAutoLayout() {
+        NSLayoutConstraint.activate([
+            homeHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            homeHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            homeHeaderView.heightAnchor.constraint(equalToConstant: 60),
+            homeHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            
+            homeSearchView.topAnchor.constraint(equalTo: homeHeaderView.bottomAnchor, constant: 10),
+            homeSearchView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
     }
     
     func setupTabBarItems() -> [UIViewController] {

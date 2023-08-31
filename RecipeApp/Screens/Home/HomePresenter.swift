@@ -11,6 +11,8 @@ protocol HomePresenterProtocol: AnyObject {
     var view: HomeViewProtocol? { get set }
     var interactor: HomeInteractorProtocol? { get set }
     var router: HomeRouterProtocol? { get set }
+    
+    func openFilterSearchView()
 }
 
 final class HomePresenter: HomePresenterProtocol {    
@@ -18,5 +20,7 @@ final class HomePresenter: HomePresenterProtocol {
     var interactor: HomeInteractorProtocol?
     var router: HomeRouterProtocol?
     
-    
+    func openFilterSearchView() {
+        router?.openFilterSearchView()
+    }
 }

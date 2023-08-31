@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     func isEmailValid() -> Bool {
@@ -41,45 +42,61 @@ extension String {
     
     func validatePassword() -> String {
         var message = ""
-
-          if !NSPredicate(format: "SELF MATCHES %@", ".{8,}").evaluate(with: self) {
-              message += "Password must be at least 8 characters.\n"
-          }
-
-          if !NSPredicate(format: "SELF MATCHES %@", ".*[0-9]+.*").evaluate(with: self) {
-              message += "Include at least one number.\n"
-          }
-
-          if !NSPredicate(format: "SELF MATCHES %@", ".*[!&^%$#@()/]+.*").evaluate(with: self) {
-              message += "Include at least one special character.\n"
-          }
-
-          if !NSPredicate(format: "SELF MATCHES %@", ".*[A-Z]+.*").evaluate(with: self) {
-              message += "Include at least one uppercase letter.\n"
-          }
-
-          return message
+        
+        if !NSPredicate(format: "SELF MATCHES %@", ".{8,}").evaluate(with: self) {
+            message += "Password must be at least 8 characters.\n"
+        }
+        
+        if !NSPredicate(format: "SELF MATCHES %@", ".*[0-9]+.*").evaluate(with: self) {
+            message += "Include at least one number.\n"
+        }
+        
+        if !NSPredicate(format: "SELF MATCHES %@", ".*[!&^%$#@()/]+.*").evaluate(with: self) {
+            message += "Include at least one special character.\n"
+        }
+        
+        if !NSPredicate(format: "SELF MATCHES %@", ".*[A-Z]+.*").evaluate(with: self) {
+            message += "Include at least one uppercase letter.\n"
+        }
+        
+        return message
     }
     
     func validateEmail() -> String {
         var message = ""
-
+        
         if !NSPredicate(format: "SELF MATCHES %@", "^[A-Z0-9a-z._%+-]+").evaluate(with: self) {
             message += "Email must include a local part.\n"
         }
-
+        
         if !NSPredicate(format: "SELF MATCHES %@", ".*@.*").evaluate(with: self) {
             message += "Email must include '@'.\n"
         }
-
+        
         if !NSPredicate(format: "SELF MATCHES %@", ".*@[A-Za-z0-9.-]+").evaluate(with: self) {
             message += "Email must include a domain.\n"
         }
-
+        
         if !NSPredicate(format: "SELF MATCHES %@", ".*\\.[A-Za-z]{2,64}").evaluate(with: self) {
             message += "Email must have a valid domain extension.\n"
         }
-
+        
         return message
+    }
+    
+    func textToImage() -> UIImage? {
+        let nsString = (self as NSString)
+        let font = UIFont.systemFont(ofSize: 1024)
+        let stringAttributes = [NSAttributedString.Key.font: font]
+        let imageSize = nsString.size(withAttributes: stringAttributes)
+        
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
+        UIColor.clear.set()
+        UIRectFill(CGRect(origin: CGPoint(), size: imageSize))
+        nsString.draw(at: CGPoint.zero, withAttributes: stringAttributes)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image ?? UIImage()
     }
 }
