@@ -26,6 +26,14 @@ final class HomeView: UITabBarController, HomeViewProtocol, HomeHeaderViewDelega
         return view
     }()
     
+    private lazy var productCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+    
     private let filterButton: UIButton = {
         let button = UIButton()
         return button
@@ -39,12 +47,12 @@ final class HomeView: UITabBarController, HomeViewProtocol, HomeHeaderViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        viewControllers = setupTabBarItems()
+        viewControllers = TabBarConfiguration.shared.setupTabBarItems()
         setupSubviews()
         setupAutoLayout()
-        
-        homeHeaderView.delegate = self
-        homeSearchView.delegate = self
+        setupDelegates()
+        disableBackNavigation()
+        setupProductCell()
     }
     
     func presentPicker(_ picker: PHPickerViewController) {
@@ -57,11 +65,27 @@ final class HomeView: UITabBarController, HomeViewProtocol, HomeHeaderViewDelega
 }
 
 private extension HomeView {
+    func setupProductCell() {
+        productCollectionView.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
+        productCollectionView.delegate = self
+        productCollectionView.dataSource = self
+    }
+    
+    func disableBackNavigation() {
+        navigationItem.hidesBackButton = true
+    }
+    
+    func setupDelegates() {
+        homeHeaderView.delegate = self
+        homeSearchView.delegate = self
+    }
+    
     func setupSubviews() {
         view.addSubviewAndDisableAutoresizing(homeHeaderView)
         view.addSubviewAndDisableAutoresizing(homeSearchView)
         view.addSubviewAndDisableAutoresizing(filterButton)
         view.addSubviewAndDisableAutoresizing(segmentedControl)
+        view.addSubviewAndDisableAutoresizing(productCollectionView)
     }
     
     func setupAutoLayout() {
@@ -72,31 +96,31 @@ private extension HomeView {
             homeHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
             
             homeSearchView.topAnchor.constraint(equalTo: homeHeaderView.bottomAnchor, constant: 10),
-            homeSearchView.widthAnchor.constraint(equalTo: view.widthAnchor)
+            homeSearchView.leadingAnchor.constraint(equalTo: homeHeaderView.leadingAnchor, constant: -10),
+            homeSearchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            productCollectionView.topAnchor.constraint(equalTo: homeSearchView.bottomAnchor, constant: 20),
+            productCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            productCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            productCollectionView.heightAnchor.constraint(equalToConstant: 250),
         ])
     }
+}
+
+extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
     
-    func setupTabBarItems() -> [UIViewController] {
-        let viewController1 = UIViewController()
-        let viewController2 = UIViewController()
-        let viewController3 = UIViewController()
-        let viewController4 = UIViewController()
-        let viewController5 = UIViewController()
-        
-        viewController1.tabBarItem.image = UIImage(named: "home")
-        viewController1.tabBarItem.selectedImage = UIImage(named: "selected_home")
-        
-        viewController2.tabBarItem.image = UIImage(named: "saved")
-        viewController2.tabBarItem.selectedImage = UIImage(named: "selected_saved")
-        
-        viewController4.tabBarItem.image = UIImage(named: "notification")
-        viewController4.tabBarItem.selectedImage = UIImage(named: "selected_notification")
-        
-        viewController5.tabBarItem.image = UIImage(named: "profile")
-        viewController5.tabBarItem.selectedImage = UIImage(named: "selected_profile")
-        
-        viewController3.tabBarItem.image = UIImage(named: "create_receipt")
-        
-        return [viewController1, viewController2, viewController3, viewController4, viewController5]
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
+        cell.configure(with:  "Product\(indexPath)",
+                       imagePath: UIImage(named: "create_receipt")!,
+                       timeValueText: "10")
+        return cell
     }
 }

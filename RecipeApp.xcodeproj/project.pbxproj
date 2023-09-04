@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB112EE12AA5B4D50034C9B5 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB112EE02AA5B4D50034C9B5 /* ProductCell.swift */; };
 		BB34BB902A88C1EA006C2732 /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */; };
 		BB34BB932A88C6D1006C2732 /* RegistrationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB922A88C6D1006C2732 /* RegistrationEntity.swift */; };
 		BB34BB952A88C6DC006C2732 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */; };
@@ -57,9 +58,11 @@
 		BBD3F3832A81853F00369CB2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F3822A81853F00369CB2 /* LoginPresenter.swift */; };
 		BBD3F3852A81854F00369CB2 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F3842A81854F00369CB2 /* LoginRouter.swift */; };
 		BBD3F3892A81894000369CB2 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3F3882A81894000369CB2 /* UIView+Extensions.swift */; };
+		BBF2A0842AA22DAF00546736 /* TabBarConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2A0832AA22DAF00546736 /* TabBarConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB112EE02AA5B4D50034C9B5 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		BB34BB922A88C6D1006C2732 /* RegistrationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEntity.swift; sourceTree = "<group>"; };
 		BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 		BBD3F3822A81853F00369CB2 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		BBD3F3842A81854F00369CB2 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		BBD3F3882A81894000369CB2 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		BBF2A0832AA22DAF00546736 /* TabBarConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB112EDF2AA5B4C70034C9B5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BB112EE02AA5B4D50034C9B5 /* ProductCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		BB34BB912A88C6B3006C2732 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,16 +163,10 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
-		BBA296352A866E55004996DE /* Base */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
 		BBCD56E02A914AA700F9BF61 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BB112EDF2AA5B4C70034C9B5 /* Cells */,
 				BBCD57192AA0AE3D00F9BF61 /* Subviews */,
 				BBCD56E12A914AB400F9BF61 /* HomeEntity.swift */,
 				BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */,
@@ -277,10 +283,10 @@
 		BBD3F3692A8183BC00369CB2 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				BBF2A0822AA22D8800546736 /* TabBarConfiguration */,
 				BBCD57062A94DCC600F9BF61 /* Provider */,
 				BBCD56F22A91584400F9BF61 /* Styles */,
 				BBCD56F12A91581B00F9BF61 /* Screens */,
-				BBA296352A866E55004996DE /* Base */,
 				BBD3F38B2A818BDF00369CB2 /* Helper */,
 				BBD3F3732A8183BD00369CB2 /* Assets.xcassets */,
 				BBCD56FF2A94C34500F9BF61 /* GoogleService-Info.plist */,
@@ -314,6 +320,14 @@
 				BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		BBF2A0822AA22D8800546736 /* TabBarConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				BBF2A0832AA22DAF00546736 /* TabBarConfiguration.swift */,
+			);
+			path = TabBarConfiguration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +428,7 @@
 				BBD3F3892A81894000369CB2 /* UIView+Extensions.swift in Sources */,
 				BBA296262A86314F004996DE /* WelcomeInteractor.swift in Sources */,
 				BBCD56EC2A914B2F00F9BF61 /* HomeConfigurator.swift in Sources */,
+				BBF2A0842AA22DAF00546736 /* TabBarConfiguration.swift in Sources */,
 				BBD3F3852A81854F00369CB2 /* LoginRouter.swift in Sources */,
 				BB34BB932A88C6D1006C2732 /* RegistrationEntity.swift in Sources */,
 				BBD3F3812A81853200369CB2 /* LoginInteractor.swift in Sources */,
@@ -438,6 +453,7 @@
 				BB34BB902A88C1EA006C2732 /* LoginConfigurator.swift in Sources */,
 				BBCD571F2AA0C53600F9BF61 /* HomeStyle.swift in Sources */,
 				BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */,
+				BB112EE12AA5B4D50034C9B5 /* ProductCell.swift in Sources */,
 				BBCD56FC2A94A8C500F9BF61 /* GeneralStyle.swift in Sources */,
 				BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */,
 			);
