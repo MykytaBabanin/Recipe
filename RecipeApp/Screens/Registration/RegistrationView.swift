@@ -32,8 +32,8 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
         static let registrationErrorTitle = "Registration Error"
         static let alertAction = "Ok"
         
-        static let accountSubtitleFontSize: CGFloat = 11
         static let accountTitleFontSize: CGFloat = 20
+        static let accountSubtitleFontSize: CGFloat = 15
         static let separatorLabelFontSize: CGFloat = 11
         static let componentsHeight: CGFloat = 55
     }
@@ -92,13 +92,6 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
                               action: #selector(loginButtonTapped))
     }()
     
-    private lazy var separatorLabel: UILabel = {
-        Login.Title.apply(text: Constants.separatorLabelTitle,
-                          fontSize: Constants.separatorLabelFontSize,
-                          textAlignment: .center,
-                          textColor: UIColor(hex: "#D9D9D9"))
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
@@ -155,7 +148,6 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
         registrationStackView.addArrangedSubview(passwordTextField)
         registrationStackView.addArrangedSubview(confirmationPasswordTextField)
         registrationStackView.addArrangedSubview(registrationButton)
-        registrationStackView.addArrangedSubview(separatorLabel)
         registrationStackView.addArrangedSubview(alreadyMemberLabel)
         
         applyHeight(components: [nameTextField, emailTextField, passwordTextField, confirmationPasswordTextField, registrationButton], constant: Constants.componentsHeight)

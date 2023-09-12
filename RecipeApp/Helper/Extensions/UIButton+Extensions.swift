@@ -21,6 +21,7 @@ extension UIButton {
         
         let button = UIButton(configuration: buttonConfiguration, primaryAction: nil)
         button.semanticContentAttribute = .forceRightToLeft
+        button.titleLabel?.font = GeneralStyle.setupMainAppFont(fontSize: 14, isBold: true)
         return button
     }
 }

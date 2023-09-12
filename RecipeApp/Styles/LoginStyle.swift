@@ -10,7 +10,7 @@ import UIKit
 enum Login {
     enum Button {
         static func apply(title: String) -> UIButton {
-            return UIButton().buildMainAppButton(title: title, backgroundColor: GeneralStyle.mainBackgroundColor, withArrow: true)
+            return UIButton().buildMainAppButton(title: title, backgroundColor: GeneralStyle.mainAppColor, withArrow: true)
         }
     }
     enum StackView {
@@ -25,7 +25,7 @@ enum Login {
         static func apply(text: String,
                           fontSize: CGFloat,
                           textAlignment: NSTextAlignment,
-                          textColor: UIColor? = .white) -> UILabel {
+                          textColor: UIColor? = .darkText) -> UILabel {
             let label = UILabel()
             label.font = GeneralStyle.setupMainAppFont(fontSize: fontSize)
             label.numberOfLines = 0
@@ -44,7 +44,7 @@ enum Login {
             let label = UILabel()
             label.createWithLink(normalText: text, clickableText: clickableText, target: target, action: action)
             label.textAlignment = .center
-            label.font = GeneralStyle.setupMainAppFont(fontSize: 11)
+            label.font = GeneralStyle.setupMainAppFont(fontSize: 15)
             return label
         }
     }
