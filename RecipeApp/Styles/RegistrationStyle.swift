@@ -20,7 +20,7 @@ enum Registration {
         static func apply(text: String, fontSize: CGFloat, fontWeight: UIFont.Weight) -> UILabel{
             let label = UILabel()
             label.text = text
-            label.font = .systemFont(ofSize: fontSize, weight: fontWeight)
+            label.font = GeneralStyle.setupMainAppFont(fontSize: fontSize)
             label.numberOfLines = 0
             return label
         }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 private struct Constants {
     fileprivate struct LayoutConstants {
@@ -32,6 +33,7 @@ protocol WelcomeViewProtocol: AnyObject {
 
 final class WelcomeView: UIViewController, WelcomeViewProtocol {
     var presenter: WelcomePresenter?
+    private var subscriptions = Set<AnyCancellable>()
     
     private lazy var backgroundImageView: UIImageView = {
         ImageStyle.apply(for: view, withImage: Constants.ImagePathConstants.backgroundImage)
@@ -95,10 +97,9 @@ final class WelcomeView: UIViewController, WelcomeViewProtocol {
     }
     
     private func setupActions() {
-        startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
-    }
-    
-    @objc private func startButtonTapped() {
-        presenter?.navigateLogin()
+        startButton.touchUpInsidePublisher()
+            .sink { [weak self] in
+                self?.presenter?.navigateLogin()
+            }.store(in: &subscriptions)
     }
 }

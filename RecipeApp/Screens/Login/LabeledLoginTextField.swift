@@ -7,7 +7,18 @@
 
 import UIKit
 
-class LabeledTextField: UIView {
+final class LabeledTextField: UIView {
+    
+    enum Constants {
+        static let stackViewSpacing: CGFloat = 4
+        static let subtitleLabelFontSize: CGFloat = 10
+        static let numberOfLines = 1
+        static let empty = ""
+        static let errorBorderWidth: CGFloat = 1
+        static let errorCornerRadius: CGFloat = 5
+        static let nonErrorBorderWidth: CGFloat = 0
+    }
+    
     struct ViewState {
         let placeholder: String
         let isPassword: Bool
@@ -44,17 +55,17 @@ class LabeledTextField: UIView {
 
     private func changeState() {
         if isError {
-            textField.layer.borderWidth = 1
-            textField.layer.cornerRadius = 5
+            textField.layer.borderWidth = Constants.errorBorderWidth
+            textField.layer.cornerRadius = Constants.errorCornerRadius
             
             subtitleLabel.textColor = .red
             subtitleLabel.text = subtitle
         } else {
-            textField.layer.borderWidth = 0
-            subtitle = ""
+            textField.layer.borderWidth = Constants.nonErrorBorderWidth
+            subtitle = Constants.empty
         }
         
-        subtitleLabel.isHidden = subtitle == ""
+        subtitleLabel.isHidden = subtitle == Constants.empty
     }
     
     init() {
@@ -84,10 +95,10 @@ class LabeledTextField: UIView {
         stackView.pin(toEdges: self)
         
         stackView.axis = .vertical
-        stackView.spacing = 4
+        stackView.spacing = Constants.stackViewSpacing
             
-        subtitleLabel.font = .systemFont(ofSize: 10)
-        subtitleLabel.numberOfLines = 1
+        subtitleLabel.font = GeneralStyle.setupMainAppFont(fontSize: Constants.subtitleLabelFontSize)
+        subtitleLabel.numberOfLines = Constants.numberOfLines
         
         textField.autocapitalizationType = .none
         textField.layer.borderColor = UIColor.red.cgColor

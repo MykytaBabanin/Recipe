@@ -7,8 +7,35 @@
 
 import Foundation
 import UIKit
+import CryptoSwift
+
+extension CharacterSet {
+    var percentEncoded: CharacterSet {
+        get { return CharacterSet.init(charactersIn: String().getPercentEncodingCharacterSet()) }
+    }
+}
 
 extension String {
+    func getPercentEncodingCharacterSet() -> String {
+        let digits = "0123456789"
+        let lowercase = "abcdefghijklmnopqrstuvwxyz"
+        let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let reserved = "-._~"
+        
+        return digits + lowercase + uppercase + reserved
+    }
+    
+    func getSignature(key: String, params: String) -> String {
+        var array = [UInt8]()
+        array += params.utf8
+        
+        let sign = try! HMAC(key: key, variant: .sha1).authenticate(array).toBase64()
+        
+        return sign
+    }
+    
+    func contains(find: String) -> Bool{ return self.range(of: find) != nil }
+    
     func isEmailValid() -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         

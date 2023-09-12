@@ -18,6 +18,26 @@ protocol RegistrationViewProtocol: AnyObject {
 }
 
 final class RegistrationView: UIViewController, RegistrationViewProtocol {
+    enum Constants {
+        static let accountTitle = "Create Account"
+        static let accountSubtitle = "Let’s help you set up your account,\nit won’t take long."
+        static let nameTextFieldPlaceholder = "Enter name"
+        static let emailFieldPlaceholder = "Enter email"
+        static let passwordFieldPlaceholder = "Enter password"
+        static let confirmationPasswordFieldPlaceholder = "Enter confirmation password"
+        static let registrationButtonTitle = "Sign up"
+        static let alreadyMemberLabelTitle = "Already a member?"
+        static let alreadyMemberClickableText = "Sign In"
+        static let separatorLabelTitle = "Or Sign In With"
+        static let registrationErrorTitle = "Registration Error"
+        static let alertAction = "Ok"
+        
+        static let accountSubtitleFontSize: CGFloat = 11
+        static let accountTitleFontSize: CGFloat = 20
+        static let separatorLabelFontSize: CGFloat = 11
+        static let componentsHeight: CGFloat = 55
+    }
+    
     var presenter: RegistrationPresenterProtocol?
     private var subscriptions = Set<AnyCancellable>()
     
@@ -25,56 +45,56 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
         Registration.StackView.apply()
     }()
     
-    private lazy var createAccountTitle: UILabel = {
-        Registration.Label.apply(text: "Create Account", fontSize: 20, fontWeight: .bold)
+    private lazy var accountTitle: UILabel = {
+        Registration.Label.apply(text: Constants.accountTitle, fontSize: Constants.accountTitleFontSize, fontWeight: .bold)
     }()
     
-    private lazy var createAccountSubtitle: UILabel = {
-        Registration.Label.apply(text: "Let’s help you set up your account,\nit won’t take long.", fontSize: 11, fontWeight: .light)
+    private lazy var accountSubtitle: UILabel = {
+        Registration.Label.apply(text: Constants.accountSubtitle, fontSize: Constants.accountSubtitleFontSize, fontWeight: .light)
     }()
     
     private lazy var nameTextField: LabeledTextField = {
         let textField = LabeledTextField()
-        let viewState = LabeledTextField.ViewState(placeholder: "Enter name", isPassword: false)
+        let viewState = LabeledTextField.ViewState(placeholder: Constants.nameTextFieldPlaceholder, isPassword: false)
         textField.render(with: viewState)
         return textField
     }()
     
     private lazy var emailTextField: LabeledTextField = {
         let textField = LabeledTextField()
-        let viewState = LabeledTextField.ViewState(placeholder: "Enter email", isPassword: false)
+        let viewState = LabeledTextField.ViewState(placeholder: Constants.emailFieldPlaceholder, isPassword: false)
         textField.render(with: viewState)
         return textField
     }()
     
     private lazy var passwordTextField: LabeledTextField = {
         let textField = LabeledTextField()
-        let viewState = LabeledTextField.ViewState(placeholder: "Enter password", isPassword: true)
+        let viewState = LabeledTextField.ViewState(placeholder: Constants.passwordFieldPlaceholder, isPassword: true)
         textField.render(with: viewState)
         return textField
     }()
     
     private lazy var confirmationPasswordTextField: LabeledTextField = {
         let textField = LabeledTextField()
-        let viewState = LabeledTextField.ViewState(placeholder: "Enter confirmation password", isPassword: true)
+        let viewState = LabeledTextField.ViewState(placeholder: Constants.confirmationPasswordFieldPlaceholder, isPassword: true)
         textField.render(with: viewState)
         return textField
     }()
     
     private lazy var registrationButton: UIButton = {
-        Login.Button.apply(title: "Sign up")
+        Login.Button.apply(title: Constants.registrationButtonTitle)
     }()
     
     private lazy var alreadyMemberLabel: UILabel = {
-        Login.Title.applyLink(text: "Already a member?",
-                              clickableText: "Sign In",
+        Login.Title.applyLink(text: Constants.alreadyMemberLabelTitle,
+                              clickableText: Constants.alreadyMemberClickableText,
                               target: self,
                               action: #selector(loginButtonTapped))
     }()
     
     private lazy var separatorLabel: UILabel = {
-        Login.Title.apply(text: "Or Sign In With",
-                          fontSize: 11,
+        Login.Title.apply(text: Constants.separatorLabelTitle,
+                          fontSize: Constants.separatorLabelFontSize,
                           textAlignment: .center,
                           textColor: UIColor(hex: "#D9D9D9"))
     }()
@@ -118,18 +138,18 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
     }
     
     private func callValidationAlert(with error: Error) {
-        let alert = UIAlertController(title: "Registration Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel)
+        let alert = UIAlertController(title: Constants.registrationErrorTitle, message: error.localizedDescription, preferredStyle: .alert)
+        let action = UIAlertAction(title: Constants.alertAction, style: .cancel)
         alert.addAction(action)
         self.present(alert, animated: true)
     }
     
     private func setupSubviews() {
-        view.backgroundColor = .white
+        view.backgroundColor = GeneralStyle.mainBackgroundColor
         view.addSubviewAndDisableAutoresizing(registrationStackView)
         
-        registrationStackView.addArrangedSubview(createAccountTitle)
-        registrationStackView.addArrangedSubview(createAccountSubtitle)
+        registrationStackView.addArrangedSubview(accountTitle)
+        registrationStackView.addArrangedSubview(accountSubtitle)
         registrationStackView.addArrangedSubview(nameTextField)
         registrationStackView.addArrangedSubview(emailTextField)
         registrationStackView.addArrangedSubview(passwordTextField)
@@ -138,7 +158,7 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
         registrationStackView.addArrangedSubview(separatorLabel)
         registrationStackView.addArrangedSubview(alreadyMemberLabel)
         
-        applyHeight(components: [nameTextField, emailTextField, passwordTextField, confirmationPasswordTextField, registrationButton], constant: 55)
+        applyHeight(components: [nameTextField, emailTextField, passwordTextField, confirmationPasswordTextField, registrationButton], constant: Constants.componentsHeight)
     }
     
     private func setupBindings() {

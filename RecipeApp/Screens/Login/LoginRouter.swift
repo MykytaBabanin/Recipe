@@ -19,8 +19,8 @@ final class LoginRouter: LoginRouterProtocol {
     var view: LoginViewProtocol?
     
     func navigateHome() {
-        let homeModule = HomeConfigurator.build()
-        view?.navigationController?.pushViewController(homeModule as! UIViewController, animated: true)
+        let tabBarModule = TabBarConfigurator.build()
+        view?.navigationController?.pushViewController(tabBarModule, animated: true)
     }
     
     func navigateRegistration() {

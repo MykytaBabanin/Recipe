@@ -22,23 +22,39 @@ protocol LoginViewProtocol: AnyObject {
 }
 
 final class LoginView: UIViewController, LoginViewProtocol {
+    enum Constants {
+        static let registrationButtonTitle = "Registration"
+        static let loginButtonTitle = "Submit"
+        static let usernameTextFieldPlaceholder = "Enter email"
+        static let passwordTextFieldPlaceholder = "Enter password"
+        static let titleLabelText = "Hello, \nWelcome Back!"
+        static let separatorLabelText = "Or Sign In With"
+        static let dontHaveAccountLabelText = "Don't have an account?"
+        static let dontHaveAccountLabelClickableText = "Sign up"
+        static let authenticationErrorTitle = "Authentication Error"
+        static let alertAction = "Ok"
+        static let titleLabelInsets = UIEdgeInsets(top: 0, left: 30, bottom: 57, right: 0)
+        static let titleLabelFontSize: CGFloat = 30
+        static let separatorLabelFontSize: CGFloat = 11
+    }
+    
     var presenter: LoginPresenterProtocol?
         
     private let keyboardWillShow = NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
     private let keyboardWillHide = NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
-    private lazy var registrationButton: UIButton = { ButtonStyle.apply(title: "Registration") }()
+    private lazy var registrationButton: UIButton = { ButtonStyle.apply(title: Constants.registrationButtonTitle) }()
     private lazy var loginStackView: UIStackView = { StackViewStyle.apply() }()
-    private var loginButton: UIButton = { ButtonStyle.apply(title: "Submit") }()
+    private var loginButton: UIButton = { ButtonStyle.apply(title: Constants.loginButtonTitle) }()
     private var subscriptions = Set<AnyCancellable>()
     private let usernameTextField: LabeledTextField = {
         let textField = LabeledTextField()
-        let viewState = LabeledTextField.ViewState(placeholder: "Enter email", isPassword: false)
+        let viewState = LabeledTextField.ViewState(placeholder: Constants.usernameTextFieldPlaceholder, isPassword: false)
         textField.render(with: viewState)
         return textField
     }()
     private let passwordTextField: LabeledTextField = {
         let textField = LabeledTextField()
-        let viewState = LabeledTextField.ViewState(placeholder: "Enter password", isPassword: true)
+        let viewState = LabeledTextField.ViewState(placeholder: Constants.passwordTextFieldPlaceholder, isPassword: true)
         textField.render(with: viewState)
         return textField
     }()
@@ -52,21 +68,14 @@ final class LoginView: UIViewController, LoginViewProtocol {
 
     
     private lazy var titleLabel: UILabel = {
-        TitleStyle.apply(text: "Hello, \nWelcome Back!",
-                         fontSize: 30,
+        TitleStyle.apply(text: Constants.titleLabelText,
+                         fontSize: Constants.titleLabelFontSize,
                          textAlignment: .left)
     }()
     
-    private lazy var separatorLabel: UILabel = {
-        TitleStyle.apply(text: "Or Sign In With",
-                         fontSize: 11,
-                         textAlignment: .center,
-                         textColor: UIColor(hex: "#D9D9D9"))
-    }()
-    
     private lazy var dontHaveAccountLabel: UILabel = {
-        TitleStyle.applyLink(text: "Don't have an account?",
-                             clickableText: "Sign up",
+        TitleStyle.applyLink(text: Constants.dontHaveAccountLabelText,
+                             clickableText: Constants.dontHaveAccountLabelClickableText,
                              target: self,
                              action: #selector(registrationButtonTapped))
     }()
@@ -103,8 +112,8 @@ final class LoginView: UIViewController, LoginViewProtocol {
     }
     
     func presentFailureAuthenticationAlert(with error: Error) {
-        let alert = UIAlertController(title: "Authentication Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel)
+        let alert = UIAlertController(title: Constants.authenticationErrorTitle, message: error.localizedDescription, preferredStyle: .alert)
+        let action = UIAlertAction(title: Constants.alertAction, style: .cancel)
         alert.addAction(action)
         self.present(alert, animated: true)
     }
@@ -120,7 +129,7 @@ private extension LoginView {
     }
     
     func setupSubviews() {
-        view.backgroundColor = .white
+        view.backgroundColor = GeneralStyle.mainBackgroundColor
         view.addSubviewAndDisableAutoresizing(scrollView)
         scrollView.addSubviewAndDisableAutoresizing(contentView)
         
@@ -130,7 +139,6 @@ private extension LoginView {
         loginStackView.addArrangedSubview(usernameTextField)
         loginStackView.addArrangedSubview(passwordTextField)
         loginStackView.addArrangedSubview(loginButton)
-        loginStackView.addArrangedSubview(separatorLabel)
         loginStackView.addArrangedSubview(dontHaveAccountLabel)
         
         setupHeightComponents()
@@ -154,8 +162,8 @@ private extension LoginView {
             loginStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             loginStackView.widthAnchor.constraint(equalToConstant: LoginConstants.componentsWidth),
             
-            titleLabel.bottomAnchor.constraint(equalTo: loginStackView.topAnchor, constant: -57),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            titleLabel.bottomAnchor.constraint(equalTo: loginStackView.topAnchor, constant: -Constants.titleLabelInsets.bottom),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.titleLabelInsets.left),
         ])
     }
     

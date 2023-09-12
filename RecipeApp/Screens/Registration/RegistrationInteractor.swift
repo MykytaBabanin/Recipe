@@ -46,8 +46,7 @@ final class RegistrationInteractor: RegistrationInteractorProtocol {
             throw RegistrationErrors(errors: validationErrors)
         }
         
-        let userResult = try await authenticationProvider.signUp(email: user.email, password: user.password)
-        print(userResult)
+        try await authenticationProvider.signUp(username: user.username, email: user.email, password: user.password)
     }
     
     private func validateCredentials(user: RegisteredUser) -> [RegistrationError] {
