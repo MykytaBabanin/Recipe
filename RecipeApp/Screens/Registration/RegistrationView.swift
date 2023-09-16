@@ -35,10 +35,11 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
         static let accountTitleFontSize: CGFloat = 20
         static let accountSubtitleFontSize: CGFloat = 15
         static let separatorLabelFontSize: CGFloat = 11
-        static let componentsHeight: CGFloat = 55
+        static let componentsHeight: CGFloat = 70
     }
     
     var presenter: RegistrationPresenterProtocol?
+    private let keyboardManager: KeyboardManagingProtocol = KeyboardManager()
     private var subscriptions = Set<AnyCancellable>()
     
     private lazy var registrationStackView: UIStackView = {
@@ -92,11 +93,20 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
                               action: #selector(loginButtonTapped))
     }()
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.keyboardDismissMode = .onDrag
+        return scrollView
+    }()
+    
+    private let contentView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
         setupAutoLayout()
         setupBindings()
+        setupKeyboardHiddingWhileTapOutside()
     }
     
     func checkValidation(_ errors: RegistrationErrors) {
@@ -129,17 +139,21 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
             [nameTextField, emailTextField, passwordTextField, confirmationPasswordTextField].forEach { $0.isError = false }
         }
     }
-    
-    private func callValidationAlert(with error: Error) {
+}
+
+private extension RegistrationView {
+    func callValidationAlert(with error: Error) {
         let alert = UIAlertController(title: Constants.registrationErrorTitle, message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: Constants.alertAction, style: .cancel)
         alert.addAction(action)
         self.present(alert, animated: true)
     }
     
-    private func setupSubviews() {
+    func setupSubviews() {
         view.backgroundColor = GeneralStyle.mainBackgroundColor
-        view.addSubviewAndDisableAutoresizing(registrationStackView)
+        view.addSubviewAndDisableAutoresizing(scrollView)
+        scrollView.addSubviewAndDisableAutoresizing(contentView)
+        contentView.addSubviewAndDisableAutoresizing(registrationStackView)
         
         registrationStackView.addArrangedSubview(accountTitle)
         registrationStackView.addArrangedSubview(accountSubtitle)
@@ -153,7 +167,8 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
         applyHeight(components: [nameTextField, emailTextField, passwordTextField, confirmationPasswordTextField, registrationButton], constant: Constants.componentsHeight)
     }
     
-    private func setupBindings() {
+    func setupBindings() {
+        keyboardManager.setupKeyboardHandling(for: self, scrollView: scrollView)
         registrationButton.touchUpInsidePublisher()
             .sink { [weak self] in
                 guard let username = self?.nameTextField.text,
@@ -167,19 +182,45 @@ final class RegistrationView: UIViewController, RegistrationViewProtocol {
             }.store(in: &subscriptions)
     }
     
-    private func setupAutoLayout() {
+    func setupAutoLayout() {
+        contentView.pin(toEdges: scrollView)
+        
         NSLayoutConstraint.activate([
-            registrationStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            registrationStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            
+            registrationStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            registrationStackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: -50),
             registrationStackView.widthAnchor.constraint(equalToConstant: LoginConstants.componentsWidth),
         ])
     }
     
-    private func registrationButtonTapped(user: RegisteredUser) {
+    func registrationButtonTapped(user: RegisteredUser) {
         presenter?.register(user: user)
     }
     
-    @objc private func loginButtonTapped() {
+    func setupKeyboardHiddingWhileTapOutside() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func loginButtonTapped() {
         presenter?.navigateLogin()
+    }
+    
+    @objc func didTapView(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+}
+
+extension RegistrationView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

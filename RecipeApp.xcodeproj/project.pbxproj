@@ -25,6 +25,7 @@
 		BB298AC22AAF230500137FB6 /* SavedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AC12AAF230500137FB6 /* SavedRouter.swift */; };
 		BB298AC62AAF4DD100137FB6 /* HomeWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AC52AAF4DD100137FB6 /* HomeWelcomeView.swift */; };
 		BB298AD02AAF61B200137FB6 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = BB298ACF2AAF61B200137FB6 /* welcome.json */; };
+		BB298AD22AB0825E00137FB6 /* KeyboardManagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AD12AB0825E00137FB6 /* KeyboardManagingService.swift */; };
 		BB34BB902A88C1EA006C2732 /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */; };
 		BB34BB952A88C6DC006C2732 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */; };
 		BB34BB972A88C6E3006C2732 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB962A88C6E3006C2732 /* RegistrationRouter.swift */; };
@@ -96,6 +97,7 @@
 		BB298AC12AAF230500137FB6 /* SavedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRouter.swift; sourceTree = "<group>"; };
 		BB298AC52AAF4DD100137FB6 /* HomeWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWelcomeView.swift; sourceTree = "<group>"; };
 		BB298ACF2AAF61B200137FB6 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
+		BB298AD12AB0825E00137FB6 /* KeyboardManagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagingService.swift; sourceTree = "<group>"; };
 		BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		BB34BB962A88C6E3006C2732 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				BBD3F36C2A8183BC00369CB2 /* SceneDelegate.swift */,
 				BBD3F36A2A8183BC00369CB2 /* AppDelegate.swift */,
 				BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */,
+				BB298AD12AB0825E00137FB6 /* KeyboardManagingService.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */,
 				BB48D86B2AA740EE00A874AC /* FatSecretProvider.swift in Sources */,
 				BB112EE12AA5B4D50034C9B5 /* ProductCell.swift in Sources */,
+				BB298AD22AB0825E00137FB6 /* KeyboardManagingService.swift in Sources */,
 				BBCD56FC2A94A8C500F9BF61 /* GeneralStyle.swift in Sources */,
 				BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */,
 			);

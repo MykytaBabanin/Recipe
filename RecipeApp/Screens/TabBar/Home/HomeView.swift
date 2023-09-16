@@ -172,8 +172,7 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         cell.showAnimation {
             if let ingredient = self.homeSearchView.ingredients?[indexPath.row] {
                 if let user = Auth.auth().currentUser {
-                    let uid = user.uid
-                    self.presenter?.saveIngredients(ingredient: ingredient, forUser: uid)
+                    self.presenter?.saveIngredients(ingredient: ingredient, forUser: user.uid)
                 }
                 self.presenter?.openDetailedPage(with: ingredient.foodUrl)
             }
