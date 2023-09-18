@@ -17,6 +17,8 @@ final class HomeTabBarController: UITabBarController, HomeTabBarProtocol {
         static let homeHighlighted = "selected_home"
         static let savedIcon = "saved"
         static let savedHighlighted = "selected_saved"
+        static let calorieCounterIcon = "calories"
+        static let calorieCounterIconHighlighted = "calories_selected"
     }
     
     override func viewDidLoad() {
@@ -28,6 +30,7 @@ final class HomeTabBarController: UITabBarController, HomeTabBarProtocol {
     func setupTabBarItems() {
         let homeViewController: HomeViewProtocol = HomeConfigurator.build()
         let savedViewController: SavedViewProtocol = SavedConfigurator.build()
+        let calorieCounterViewController: CalorieCounterViewProtocol = CalorieCounterConfigurator.build()
         
         homeViewController.tabBarItem.image = UIImage(named: Constants.homeIcon)
         homeViewController.tabBarItem.selectedImage = UIImage(named: Constants.homeHighlighted)
@@ -35,6 +38,9 @@ final class HomeTabBarController: UITabBarController, HomeTabBarProtocol {
         savedViewController.tabBarItem.image = UIImage(named: Constants.savedIcon)
         savedViewController.tabBarItem.selectedImage = UIImage(named: Constants.savedHighlighted)
         
-        viewControllers = [homeViewController, savedViewController]
+        calorieCounterViewController.tabBarItem.image = UIImage(named: Constants.calorieCounterIcon)
+        calorieCounterViewController.tabBarItem.selectedImage = UIImage(named: Constants.calorieCounterIconHighlighted)
+        
+        viewControllers = [homeViewController, savedViewController, calorieCounterViewController]
     }
 }

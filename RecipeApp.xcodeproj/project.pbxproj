@@ -46,6 +46,11 @@
 		BBBF30172AA885BA0089CD62 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF30162AA885BA0089CD62 /* URLSession+Extension.swift */; };
 		BBBF30192AA8B9AB0089CD62 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF30182AA8B9AB0089CD62 /* Array+Extension.swift */; };
 		BBBF301B2AA8BA480089CD62 /* URLComponents+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF301A2AA8BA480089CD62 /* URLComponents+Extensions.swift */; };
+		BBC58CE32AB8A00400C4E32E /* CalorieCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE22AB8A00400C4E32E /* CalorieCounterView.swift */; };
+		BBC58CE52AB8A01000C4E32E /* CalorieCounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE42AB8A01000C4E32E /* CalorieCounterRouter.swift */; };
+		BBC58CE72AB8A01A00C4E32E /* CalorieCounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */; };
+		BBC58CE92AB8A02300C4E32E /* CalorieCounterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */; };
+		BBC58CEB2AB8A08100C4E32E /* CalorieCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */; };
 		BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */; };
 		BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */; };
 		BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */; };
@@ -118,6 +123,11 @@
 		BBBF30162AA885BA0089CD62 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		BBBF30182AA8B9AB0089CD62 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		BBBF301A2AA8BA480089CD62 /* URLComponents+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Extensions.swift"; sourceTree = "<group>"; };
+		BBC58CE22AB8A00400C4E32E /* CalorieCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterView.swift; sourceTree = "<group>"; };
+		BBC58CE42AB8A01000C4E32E /* CalorieCounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterRouter.swift; sourceTree = "<group>"; };
+		BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterPresenter.swift; sourceTree = "<group>"; };
+		BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterInteractor.swift; sourceTree = "<group>"; };
+		BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterConfigurator.swift; sourceTree = "<group>"; };
 		BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -231,6 +241,18 @@
 				BBA296332A866997004996DE /* WelcomeConfigurator.swift */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		BBC58CE12AB89FF700C4E32E /* CalorieCounter */ = {
+			isa = PBXGroup;
+			children = (
+				BBC58CE22AB8A00400C4E32E /* CalorieCounterView.swift */,
+				BBC58CE42AB8A01000C4E32E /* CalorieCounterRouter.swift */,
+				BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */,
+				BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */,
+				BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */,
+			);
+			path = CalorieCounter;
 			sourceTree = "<group>";
 		};
 		BBCD56E02A914AA700F9BF61 /* Home */ = {
@@ -367,8 +389,9 @@
 		BBF2A0822AA22D8800546736 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				BB298A692AAB484500137FB6 /* Saved */,
+				BBC58CE12AB89FF700C4E32E /* CalorieCounter */,
 				BBCD56E02A914AA700F9BF61 /* Home */,
+				BB298A692AAB484500137FB6 /* Saved */,
 				BBF2A0832AA22DAF00546736 /* HomeTabBarController.swift */,
 				BBCD56EB2A914B2F00F9BF61 /* TabBarConfigurator.swift */,
 				BB298A702AAB54FE00137FB6 /* AnimatedItem.swift */,
@@ -474,7 +497,9 @@
 				BBD3F3832A81853F00369CB2 /* LoginPresenter.swift in Sources */,
 				BBCD57082A94DCD700F9BF61 /* FirebaseProviders.swift in Sources */,
 				BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */,
+				BBC58CE52AB8A01000C4E32E /* CalorieCounterRouter.swift in Sources */,
 				BB298AC02AAF227200137FB6 /* SavedConfigurator.swift in Sources */,
+				BBC58CE92AB8A02300C4E32E /* CalorieCounterInteractor.swift in Sources */,
 				BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */,
 				BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */,
 				BB298AC22AAF230500137FB6 /* SavedRouter.swift in Sources */,
@@ -483,6 +508,7 @@
 				BBA2962A2A863162004996DE /* WelcomeRouter.swift in Sources */,
 				BBCD56F42A949A0300F9BF61 /* UIButton+Extensions.swift in Sources */,
 				BBD3F3892A81894000369CB2 /* UIView+Extensions.swift in Sources */,
+				BBC58CEB2AB8A08100C4E32E /* CalorieCounterConfigurator.swift in Sources */,
 				BBA296262A86314F004996DE /* WelcomeInteractor.swift in Sources */,
 				BBCD56EC2A914B2F00F9BF61 /* TabBarConfigurator.swift in Sources */,
 				BBF2A0842AA22DAF00546736 /* HomeTabBarController.swift in Sources */,
@@ -504,6 +530,8 @@
 				BBA296212A82EA60004996DE /* LoginConstants.swift in Sources */,
 				BBA2961C2A82E6A2004996DE /* WelcomeStyle.swift in Sources */,
 				BB34BB9D2A88C6FF006C2732 /* RegistrationConfigurator.swift in Sources */,
+				BBC58CE32AB8A00400C4E32E /* CalorieCounterView.swift in Sources */,
+				BBC58CE72AB8A01A00C4E32E /* CalorieCounterPresenter.swift in Sources */,
 				BBCD56F82A94A80900F9BF61 /* LoginStyle.swift in Sources */,
 				BBCD56F02A91566A00F9BF61 /* UiControl+Extensions.swift in Sources */,
 				BB298A682AAB3D2600137FB6 /* HomeConfigurator.swift in Sources */,
