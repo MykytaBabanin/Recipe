@@ -62,20 +62,24 @@ private extension HomeSearchView {
             .sink { [weak self] in
                 guard let self = self else { return }
                 Task {
-                    self.showAnimation {
-                        self.fatSearchProvider.key = FatSecret.apiKey
-                        self.fatSearchProvider.secret = FatSecret.apiSecret
-                        self.fatSearchProvider.searchFoodBy(name: self.searchBar.text ?? SearchConstants.empty, completion: { result in
-                            switch result {
-                            case .success(let fetchedFood):
-                                self.ingredients = self.uniqueIngredients(fetchedFood: fetchedFood)
-                            case .failure(let error):
-                                self.callAlert(with: error)
-                            }
-                        })
-                    }
+                    self.searchFoodById()
                 }
             }.store(in: &subscriptions)
+    }
+    
+    func searchFoodById() {
+        showAnimation {
+            self.fatSearchProvider.key = FatSecret.apiKey
+            self.fatSearchProvider.secret = FatSecret.apiSecret
+            self.fatSearchProvider.searchFoodBy(name: self.searchBar.text ?? SearchConstants.empty, completion: { result in
+                switch result {
+                case .success(let fetchedFood):
+                    self.ingredients = self.uniqueIngredients(fetchedFood: fetchedFood)
+                case .failure(let error):
+                    self.callAlert(with: error)
+                }
+            })
+        }
     }
     
     func uniqueIngredients(fetchedFood: FoodSearch) -> [Food]? {
@@ -124,3 +128,9 @@ private extension HomeSearchView {
     }
 }
 
+extension HomeSearchView {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchFoodById()
+    }
+}
