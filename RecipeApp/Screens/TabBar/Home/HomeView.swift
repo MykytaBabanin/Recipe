@@ -93,16 +93,10 @@ final class HomeView: UIViewController, HomeViewProtocol {
         disableBackNavigation()
         setupProductCell()
         setupBindings()
-        setupKeyboardHiddingWhileTapOutside()
     }
 }
 
 private extension HomeView {
-    func setupKeyboardHiddingWhileTapOutside() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        view.addGestureRecognizer(tapGesture)
-    }
-    
     func setupBindings() {
         homeSearchView.$ingredients
             .receive(on: DispatchQueue.main)
@@ -215,17 +209,9 @@ private extension HomeView {
             loadingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
-    
-    @objc func didTapView(gesture: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
 }
 
 extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SwipeCollectionViewCellDelegate {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.view.endEditing(true)
-    }
     
     func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
