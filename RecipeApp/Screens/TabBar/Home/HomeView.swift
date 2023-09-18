@@ -93,10 +93,17 @@ final class HomeView: UIViewController, HomeViewProtocol {
         disableBackNavigation()
         setupProductCell()
         setupBindings()
+        addKeyboardHandler()
     }
 }
 
 private extension HomeView {
+    func addKeyboardHandler() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
     func setupBindings() {
         homeSearchView.$ingredients
             .receive(on: DispatchQueue.main)
@@ -277,5 +284,9 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         cell.showAnimation {
             self.presenter?.openDetailedPage(with: ingredient.foodUrl)
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
