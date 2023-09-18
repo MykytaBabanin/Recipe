@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol HomeRouterProtocol: AnyObject {
     var view: HomeViewProtocol? { get set }
@@ -17,11 +18,8 @@ final class HomeRouter: HomeRouterProtocol {
     var view: HomeViewProtocol?
     
     func openDetailedPage(with url: String) {
-        if let url = URL(string: url) {
-            
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        }
+        guard let url = URL(string: url) else { return }
+        let safariVC = SFSafariViewController(url: url)
+        view?.present(safariVC, animated: true, completion: nil)
     }
 }

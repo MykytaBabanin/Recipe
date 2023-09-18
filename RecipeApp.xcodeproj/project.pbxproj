@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BB0C2B2A2AA9BEEE0077DCB8 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB0C2B292AA9BEEE0077DCB8 /* CryptoSwift */; };
+		BB0C791F2AB6F4F700133319 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BB0C791E2AB6F4F700133319 /* SwipeCellKit */; };
 		BB112EE12AA5B4D50034C9B5 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB112EE02AA5B4D50034C9B5 /* ProductCell.swift */; };
-		BB298A582AAB180000137FB6 /* skeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = BB298A572AAB17FF00137FB6 /* skeleton.json */; };
+		BB1616902AB8468400D12758 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BB16168F2AB8468400D12758 /* loading.json */; };
+		BB16169A2AB85A5700D12758 /* emptyList.json in Resources */ = {isa = PBXBuildFile; fileRef = BB1616992AB85A5700D12758 /* emptyList.json */; };
 		BB298A5D2AAB33C600137FB6 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB298A5C2AAB2FAB00137FB6 /* AirbnbCereal_W_XBd.otf */; };
 		BB298A632AAB355000137FB6 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB298A5F2AAB346D00137FB6 /* AirbnbCereal_W_Bk.otf */; };
 		BB298A642AAB355200137FB6 /* AirbnbCereal_W_Blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB298A622AAB346D00137FB6 /* AirbnbCereal_W_Blk.otf */; };
@@ -24,7 +26,6 @@
 		BB298AC02AAF227200137FB6 /* SavedConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298ABF2AAF227200137FB6 /* SavedConfigurator.swift */; };
 		BB298AC22AAF230500137FB6 /* SavedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AC12AAF230500137FB6 /* SavedRouter.swift */; };
 		BB298AC62AAF4DD100137FB6 /* HomeWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AC52AAF4DD100137FB6 /* HomeWelcomeView.swift */; };
-		BB298AD02AAF61B200137FB6 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = BB298ACF2AAF61B200137FB6 /* welcome.json */; };
 		BB298AD22AB0825E00137FB6 /* KeyboardManagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AD12AB0825E00137FB6 /* KeyboardManagingService.swift */; };
 		BB34BB902A88C1EA006C2732 /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */; };
 		BB34BB952A88C6DC006C2732 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */; };
@@ -60,7 +61,7 @@
 		BBCD57002A94C34500F9BF61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBCD56FF2A94C34500F9BF61 /* GoogleService-Info.plist */; };
 		BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD57022A94C78800F9BF61 /* FirebaseAuth */; };
 		BBCD57052A94C78800F9BF61 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD57042A94C78800F9BF61 /* FirebaseDatabaseSwift */; };
-		BBCD57082A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */; };
+		BBCD57082A94DCD700F9BF61 /* FirebaseProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57072A94DCD700F9BF61 /* FirebaseProviders.swift */; };
 		BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD570A2A94F7FF00F9BF61 /* Lottie */; };
 		BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */; };
 		BBCD57112A9C7BB400F9BF61 /* LabeledLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */; };
@@ -80,7 +81,8 @@
 
 /* Begin PBXFileReference section */
 		BB112EE02AA5B4D50034C9B5 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
-		BB298A572AAB17FF00137FB6 /* skeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = skeleton.json; path = ../../../../../Downloads/skeleton.json; sourceTree = "<group>"; };
+		BB16168F2AB8468400D12758 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		BB1616992AB85A5700D12758 /* emptyList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyList.json; sourceTree = "<group>"; };
 		BB298A5C2AAB2FAB00137FB6 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		BB298A5E2AAB346D00137FB6 /* AirbnbCereal_W_Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bd.otf; sourceTree = "<group>"; };
 		BB298A5F2AAB346D00137FB6 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
@@ -96,7 +98,6 @@
 		BB298ABF2AAF227200137FB6 /* SavedConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedConfigurator.swift; sourceTree = "<group>"; };
 		BB298AC12AAF230500137FB6 /* SavedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRouter.swift; sourceTree = "<group>"; };
 		BB298AC52AAF4DD100137FB6 /* HomeWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWelcomeView.swift; sourceTree = "<group>"; };
-		BB298ACF2AAF61B200137FB6 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		BB298AD12AB0825E00137FB6 /* KeyboardManagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagingService.swift; sourceTree = "<group>"; };
 		BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
@@ -130,7 +131,7 @@
 		BBCD56FB2A94A8C500F9BF61 /* GeneralStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralStyle.swift; sourceTree = "<group>"; };
 		BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutHelper.swift; sourceTree = "<group>"; };
 		BBCD56FF2A94C34500F9BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationProvider.swift; sourceTree = "<group>"; };
+		BBCD57072A94DCD700F9BF61 /* FirebaseProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProviders.swift; sourceTree = "<group>"; };
 		BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledLoginTextField.swift; sourceTree = "<group>"; };
 		BBCD571E2AA0C53600F9BF61 /* HomeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStyle.swift; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 				BBCD57052A94C78800F9BF61 /* FirebaseDatabaseSwift in Frameworks */,
 				BB0C2B2A2AA9BEEE0077DCB8 /* CryptoSwift in Frameworks */,
 				BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */,
+				BB0C791F2AB6F4F700133319 /* SwipeCellKit in Frameworks */,
 				BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,8 +177,8 @@
 		BB1F907E2AA68051008D2EBA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				BB298ACF2AAF61B200137FB6 /* welcome.json */,
-				BB298A572AAB17FF00137FB6 /* skeleton.json */,
+				BB1616992AB85A5700D12758 /* emptyList.json */,
+				BB16168F2AB8468400D12758 /* loading.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -272,7 +274,7 @@
 		BBCD57062A94DCC600F9BF61 /* Provider */ = {
 			isa = PBXGroup;
 			children = (
-				BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */,
+				BBCD57072A94DCD700F9BF61 /* FirebaseProviders.swift */,
 				BB48D86A2AA740EE00A874AC /* FatSecretProvider.swift */,
 			);
 			path = Provider;
@@ -395,6 +397,7 @@
 				BBCD57042A94C78800F9BF61 /* FirebaseDatabaseSwift */,
 				BBCD570A2A94F7FF00F9BF61 /* Lottie */,
 				BB0C2B292AA9BEEE0077DCB8 /* CryptoSwift */,
+				BB0C791E2AB6F4F700133319 /* SwipeCellKit */,
 			);
 			productName = RecipeApp;
 			productReference = BBD3F3672A8183BC00369CB2 /* RecipeApp.app */;
@@ -428,6 +431,7 @@
 				BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				BB0C2B282AA9BEEE0077DCB8 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = BBD3F3682A8183BC00369CB2 /* Products */;
 			projectDirPath = "";
@@ -446,12 +450,12 @@
 				BB298A662AAB355600137FB6 /* AirbnbCereal_W_Md.otf in Resources */,
 				BB298A632AAB355000137FB6 /* AirbnbCereal_W_Bk.otf in Resources */,
 				BBD3F3772A8183BD00369CB2 /* LaunchScreen.storyboard in Resources */,
-				BB298AD02AAF61B200137FB6 /* welcome.json in Resources */,
-				BB298A582AAB180000137FB6 /* skeleton.json in Resources */,
 				BB298A652AAB355400137FB6 /* AirbnbCereal_W_Lt.otf in Resources */,
 				BB298A642AAB355200137FB6 /* AirbnbCereal_W_Blk.otf in Resources */,
 				BB298A5D2AAB33C600137FB6 /* AirbnbCereal_W_XBd.otf in Resources */,
 				BBD3F3742A8183BD00369CB2 /* Assets.xcassets in Resources */,
+				BB1616902AB8468400D12758 /* loading.json in Resources */,
+				BB16169A2AB85A5700D12758 /* emptyList.json in Resources */,
 				BBCD57002A94C34500F9BF61 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,7 +472,7 @@
 				BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */,
 				BB34BB992A88C6EC006C2732 /* RegistrationPresenter.swift in Sources */,
 				BBD3F3832A81853F00369CB2 /* LoginPresenter.swift in Sources */,
-				BBCD57082A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift in Sources */,
+				BBCD57082A94DCD700F9BF61 /* FirebaseProviders.swift in Sources */,
 				BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */,
 				BB298AC02AAF227200137FB6 /* SavedConfigurator.swift in Sources */,
 				BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */,
@@ -739,6 +743,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 		BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -762,6 +774,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BB0C2B282AA9BEEE0077DCB8 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		BB0C791E2AB6F4F700133319 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
 		};
 		BBCD57022A94C78800F9BF61 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

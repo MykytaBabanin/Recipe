@@ -43,12 +43,8 @@ final class LoginInteractor: LoginInteractorProtocol {
         guard validationErrors.isEmpty else {
             throw AuthenticationErrors(errors: validationErrors)
         }
-        let userResult = try await authenticationProvider.signIn(email: user.username, password: user.password)
         
-        let authorisedUser = AuthorisedUser(userId: userResult.user.uid,
-                                            username: userResult.user.email ?? "Unknown",
-                                            password: user.password)
-        print(authorisedUser)
+        try await authenticationProvider.signIn(email: user.username, password: user.password)
     }
 }
 

@@ -7,12 +7,18 @@
 
 import UIKit
 import Combine
+import SwipeCellKit
+import FirebaseAuth
 
 protocol SavedViewProtocol: UIViewController, AnyObject {
     var presenter: SavedPresenterProtocol? { get set }
 }
 
 final class SavedView: UIViewController, SavedViewProtocol {
+    enum Constants {
+        static let swipeActionTitle = "Delete"
+    }
+    
     var presenter: SavedPresenterProtocol?
     private let refreshControl = UIRefreshControl()
     private lazy var savedCollectionView: UICollectionView = {
@@ -80,13 +86,39 @@ private extension SavedView {
     }
 }
 
-extension SavedView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension SavedView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SwipeCollectionViewCellDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.transitionStyle = .drag
+        return options
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right,
+              let ingredients = self.presenter?.ingredients,
+              !ingredients.isEmpty else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: Constants.swipeActionTitle) { action, indexPath in
+            let ingredient = ingredients[indexPath.row]
+            if let user = Auth.auth().currentUser {
+                self.presenter?.removeIngredient(ingredient: ingredient, forUser: user.uid)
+                self.presenter?.fetchIngredients()
+            }
+        }
+    
+        deleteAction.hidesWhenSelected = true
+        
+        return [deleteAction]
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter?.ingredients?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCellConstants.productCellIdentifier, for: indexPath) as? ProductCell else { return UICollectionViewCell() }
+        cell.delegate = self
         cell.configure(with: presenter?.ingredients?[indexPath.row])
         return cell
     }

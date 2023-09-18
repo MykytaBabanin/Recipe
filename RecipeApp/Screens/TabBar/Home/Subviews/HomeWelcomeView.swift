@@ -13,7 +13,6 @@ final class HomeWelcomeView: UIView {
         static let welcomeAnimationTrailingSpace: CGFloat = 40
         static let welcomeBackLabelLeadingSpace: CGFloat = 15
     }
-    private lazy var welcomeAnimation = AnimatedItem(animation: HomeConstants.welcomeAnimation, speed: 0.8)
     private let firebaseProvider: AuthenticationProviderProtocol
     
     private lazy var welcomeBackLabel: UILabel = {
@@ -31,7 +30,6 @@ final class HomeWelcomeView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        welcomeAnimation.play()
     }
     
     required init?(coder: NSCoder) {
@@ -42,7 +40,6 @@ final class HomeWelcomeView: UIView {
 private extension HomeWelcomeView {
     func setupSubview() {
         addSubviewAndDisableAutoresizing(welcomeBackLabel)
-        addSubviewAndDisableAutoresizing(welcomeAnimation)
     }
     
     func setupAutoLayout() {
@@ -50,11 +47,6 @@ private extension HomeWelcomeView {
             welcomeBackLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.welcomeBackLabelLeadingSpace),
             welcomeBackLabel.topAnchor.constraint(equalTo: topAnchor),
             welcomeBackLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            welcomeAnimation.topAnchor.constraint(equalTo: topAnchor),
-            welcomeAnimation.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.welcomeAnimationTrailingSpace),
-            welcomeAnimation.widthAnchor.constraint(equalToConstant: Constants.welcomeViewAnimationSize),
-            welcomeAnimation.heightAnchor.constraint(equalToConstant: Constants.welcomeViewAnimationSize),
         ])
     }
 }

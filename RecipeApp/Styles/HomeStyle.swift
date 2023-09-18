@@ -46,7 +46,7 @@ enum Home {
     enum ProductLabel {
         static func apply(_ label: UILabel) {
             label.font = GeneralStyle.mainAppFont
-            label.textColor = .white
+            label.textColor = UIColor(hex: "#165e51")
             label.numberOfLines = 0
             label.lineBreakMode = .byWordWrapping
             label.textAlignment = .center
@@ -57,6 +57,7 @@ enum Home {
         static func apply(_ label: UILabel, username: String) {
             label.numberOfLines = 2
             label.font = GeneralStyle.mainAppFont?.withSize(17)
+            label.textColor = UIColor(hex: "#165e51")
             label.text = "Welcome back, \(username)!\nTry to find something healthy today!"
         }
     }

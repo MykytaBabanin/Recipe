@@ -9,6 +9,7 @@ import Foundation
 
 final class SavedConfigurator {
     static func build() -> SavedViewProtocol {
+        let firebaseDataProvider: FirebaseDataProviderProtocol = FirebaseDataProvider()
         let view: SavedViewProtocol = SavedView()
         let interactor: SavedInteractorProtocol = SavedInteractor()
         let router: SavedRouterProtocol = SavedRouter()
@@ -21,6 +22,7 @@ final class SavedConfigurator {
         presenter.view = view
         
         interactor.presenter = presenter
+        interactor.firebaseDataProvider = firebaseDataProvider
         
         router.view = view
         
