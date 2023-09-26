@@ -22,6 +22,7 @@ final class CalorieCounterConfigurator {
         presenter.view = view
         
         interactor.presenter = presenter
+        interactor.firebaseDataProvider = firebaseDataProvider
         
         router.view = view
         

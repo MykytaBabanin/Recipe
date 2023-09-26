@@ -13,6 +13,4 @@ protocol CalorieCounterRouterProtocol {
 
 final class CalorieCounterRouter: CalorieCounterRouterProtocol {
     var view: CalorieCounterViewProtocol?
-    
-    
 }

@@ -13,9 +13,11 @@ enum FirebaseConstants {
     static let databaseUrl = "https://recipeapp-3cbe4-default-rtdb.europe-west1.firebasedatabase.app/"
     static let usersDirectory = "users"
     static let ingredientsDirectory = "ingredients"
-    static let foodId = "foodId"
-    static let nameField = "name"
-    static let urlField = "url"
+    static let foodId = "food_id"
+    static let nameField = "food_name"
+    static let foodType = "food_type"
+    static let urlField = "food_url"
+    static let serving = "servings"
 }
 
 protocol AuthenticationProviderProtocol: AnyObject {
@@ -25,9 +27,11 @@ protocol AuthenticationProviderProtocol: AnyObject {
 }
 
 protocol FirebaseDataProviderProtocol: AnyObject {
-    func saveIngredients(ingredient: Food, forUser id: String)
+    func save(ingredient: Food, forUser id: String)
+    func save(details: FoodDetails, forUser id: String)
     func fetchIngredients(forUser id: String, completion: @escaping ([Food]) -> Void)
-    func removeIngredient(ingredient: Food, forUser id: String)
+    func fetchIngredientsById(forUser id: String, completion: @escaping ([FirebaseFoodResponse]) -> Void)
+    func remove(ingredient: Food, forUser id: String)
 }
 
 final class FirebaseAuthenticationProvider: AuthenticationProviderProtocol {
@@ -69,7 +73,7 @@ final class FirebaseAuthenticationProvider: AuthenticationProviderProtocol {
 }
 
 final class FirebaseDataProvider: FirebaseDataProviderProtocol {
-    func saveIngredients(ingredient: Food, forUser id: String) {
+    func save(ingredient: Food, forUser id: String) {
         let database = Database.database(url: FirebaseConstants.databaseUrl)
         let userIngredientsRef = database.reference().child(FirebaseConstants.usersDirectory).child(id).child(FirebaseConstants.ingredientsDirectory).child(ingredient.foodId)
         userIngredientsRef.setValue([
@@ -78,6 +82,48 @@ final class FirebaseDataProvider: FirebaseDataProviderProtocol {
             FirebaseConstants.urlField: ingredient.foodUrl
         ])
     }
+    
+    func save(details: FoodDetails, forUser id: String) {
+        let database = Database.database(url: FirebaseConstants.databaseUrl)
+        let userIngredientsRef = database.reference().child(FirebaseConstants.usersDirectory).child(id).child(FirebaseConstants.ingredientsDirectory).child("\(details.foodId)")
+        let servingDictionaries = convertServingsToDictionaries(servings: details.servings.serving ?? details.servings.servingDictionary)
+        userIngredientsRef.setValue([
+            FirebaseConstants.foodId: details.foodId,
+            FirebaseConstants.nameField: details.foodName,
+            FirebaseConstants.urlField: details.foodUrl,
+            FirebaseConstants.foodType: details.foodType,
+            FirebaseConstants.serving: servingDictionaries
+        ])
+    }
+
+    
+    func convertServingsToDictionaries(servings: Any) -> Any {
+        let encoder = JSONEncoder()
+        let jsonData: Data?
+        if let singleServing = servings as? Serving {
+            jsonData = try! encoder.encode(singleServing)
+        } else if let multipleServings = servings as? [Serving] {
+            jsonData = try! encoder.encode(multipleServings)
+        } else {
+            return []
+        }
+
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: jsonData!, options: [])
+            
+            if let dictionaryArray = jsonObject as? [[String: Any]] {
+                return dictionaryArray
+            } else if let dictionary = jsonObject as? [String: Any] {
+                return [dictionary]
+            } else {
+                return []
+            }
+        } catch {
+            print("Error serializing JSON: \(error)")
+            return []
+        }
+    }
+
     
     func fetchIngredients(forUser id: String, completion: @escaping ([Food]) -> Void) {
         let database = Database.database(url: FirebaseConstants.databaseUrl)
@@ -101,7 +147,42 @@ final class FirebaseDataProvider: FirebaseDataProviderProtocol {
         }
     }
     
-    func removeIngredient(ingredient: Food, forUser id: String) {
+    func fetchIngredientsById(forUser id: String, completion: @escaping ([FirebaseFoodResponse]) -> Void) {
+        let database = Database.database(url: FirebaseConstants.databaseUrl)
+        let userIngredientsRef = database.reference().child(FirebaseConstants.usersDirectory).child(id).child(FirebaseConstants.ingredientsDirectory)
+
+        userIngredientsRef.observeSingleEvent(of: .value) { (snapshot) in
+            var ingredients: [FirebaseFoodResponse] = []
+
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let dict = childSnapshot.value as? [String: Any] {
+                       do {
+                           let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
+                           let decoder = JSONDecoder()
+                           print(dict)
+                           let ingredient = try decoder.decode(FirebaseFoodResponse.self, from: jsonData)
+
+                           ingredients.append(ingredient)
+                       } catch let DecodingError.typeMismatch(type, context)  {
+                           print("Type mismatch: \(type), context: \(context)")
+                       } catch let DecodingError.valueNotFound(value, context) {
+                           print("Value not found: \(value), context: \(context)")
+                       } catch let DecodingError.keyNotFound(key, context) {
+                           print("Key not found: \(key), context: \(context)")
+                       } catch let DecodingError.dataCorrupted(context) {
+                           print("Data corrupted: \(context)")
+                       } catch let error {
+                           print(error)
+                       }
+                }
+            }
+
+            completion(ingredients)
+        }
+    }
+    
+    func remove(ingredient: Food, forUser id: String) {
         let database = Database.database(url: FirebaseConstants.databaseUrl)
         let userIngredientsRef = database.reference().child(FirebaseConstants.usersDirectory).child(id).child(FirebaseConstants.ingredientsDirectory).child(ingredient.foodId)
         userIngredientsRef.removeValue()

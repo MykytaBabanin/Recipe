@@ -9,6 +9,7 @@ import UIKit
 
 struct GeneralStyle {
     static let mainAppColor = UIColor(hex: "#129591")
+    static let mainAppTextColor = UIColor(hex: "#165e51")
     static let mainBackgroundColor = UIColor(hex: "#F8F6F4")
     static let mainAppFont = UIFont(name: "AirbnbCereal_W_Md", size: 16)
 

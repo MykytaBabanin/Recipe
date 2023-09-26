@@ -25,6 +25,6 @@ final class SavedInteractor: SavedInteractorProtocol {
     }
     
     func removeIngredient(ingredient: Food, forUser id: String) {
-        firebaseDataProvider?.removeIngredient(ingredient: ingredient, forUser: id)
+        firebaseDataProvider?.remove(ingredient: ingredient, forUser: id)
     }
 }

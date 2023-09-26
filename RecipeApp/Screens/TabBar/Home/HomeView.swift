@@ -159,7 +159,7 @@ private extension HomeView {
     
     func handleIngredientUpdate(_ ingredient: [Food]?) {
         guard let ingredient = ingredient else { return }
-
+        
         currentState = ingredient.isEmpty ? .empty : .loaded
         productCollectionView.reloadData()
     }
@@ -229,20 +229,29 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right,
               let ingredients = self.homeSearchView.ingredients,
+              let user = Auth.auth().currentUser,
               !ingredients.isEmpty else { return nil }
         
-        let deleteAction = SwipeAction(style: .destructive, title: HomeConstants.swipeElementTitle) { [weak self] action, indexPath in
-            let ingredient = ingredients[indexPath.row]
-            if let user = Auth.auth().currentUser {
-                self?.presenter?.saveIngredients(ingredient: ingredient, forUser: user.uid)
+        let ingredient = ingredients[indexPath.row]
+        
+        let addToFavouriteAction = SwipeAction(style: .destructive, title: HomeConstants.swipeElementTitle) { [weak self] action, indexPath in
+            self?.presenter?.saveIngredients(ingredient: ingredient, forUser: user.uid)
+        }
+        
+        let addToCounterAction = SwipeAction(style: .destructive, title: HomeConstants.swipeElementTitle) { [weak self] action, indexPath in
+            Task {
+                try await self?.presenter?.getFood(by: ingredients[indexPath.row].foodId, userId: user.uid)
             }
         }
         
-        deleteAction.backgroundColor = HomeConstants.swipeElementBackgroundColor
-        deleteAction.image = HomeConstants.swipeElementImage
-        deleteAction.hidesWhenSelected = true
+        addToCounterAction.backgroundColor = .yellow
+        addToCounterAction.hidesWhenSelected = true
         
-        return [deleteAction]
+        addToFavouriteAction.backgroundColor = HomeConstants.swipeElementBackgroundColor
+        addToFavouriteAction.image = HomeConstants.swipeElementImage
+        addToFavouriteAction.hidesWhenSelected = true
+        
+        return [addToCounterAction, addToFavouriteAction]
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

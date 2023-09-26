@@ -29,6 +29,12 @@ final class SavedView: UIViewController, SavedViewProtocol {
         return collectionView
     }()
     
+    private lazy var savedLabel: UILabel = {
+        let label = UILabel()
+        Saved.Label.apply(label)
+        return label
+    }()
+    
     //MARK: Combine properties
     private var cancellables = Set<AnyCancellable>()
     private let refreshSubject = PassthroughSubject<Void, Never>()
@@ -52,12 +58,17 @@ private extension SavedView {
     }
     
     func addSubview() {
+        view.addSubviewAndDisableAutoresizing(savedLabel)
         view.addSubviewAndDisableAutoresizing(savedCollectionView)
     }
     
     func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            savedCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            savedLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            savedLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            savedLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            savedCollectionView.topAnchor.constraint(equalTo: savedLabel.bottomAnchor, constant: 20),
             savedCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             savedCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             savedCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -106,7 +117,7 @@ extension SavedView: UICollectionViewDataSource, UICollectionViewDelegate, UICol
                 self.presenter?.fetchIngredients()
             }
         }
-    
+        
         deleteAction.hidesWhenSelected = true
         
         return [deleteAction]

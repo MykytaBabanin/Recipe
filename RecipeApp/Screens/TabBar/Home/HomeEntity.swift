@@ -40,7 +40,7 @@ struct FoodDetails: Decodable {
     let foodName: String
     let foodType: String
     let foodUrl: String
-    let servings: ServingsWrapper
+    let servings: Servings
     
     enum CodingKeys: String, CodingKey {
         case foodId = "food_id"
@@ -51,11 +51,7 @@ struct FoodDetails: Decodable {
     }
 }
 
-struct ServingsWrapper: Decodable {
-    let serving: Serving
-}
-
-struct Serving: Decodable {
+struct Serving: Codable {
     let calcium: String?
     let calories: String?
     let carbohydrate: String?
@@ -67,8 +63,42 @@ struct Serving: Decodable {
     let sugar: String?
 }
 
-struct Ingredient {
-    let id: String?
-    let name: String
-    let url: String
+struct Servings: Decodable {
+    var serving: [Serving]?
+    var servingDictionary: Serving?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        do {
+            self.serving = try container.decodeIfPresent([Serving].self, forKey: .serving)
+            self.servingDictionary = nil
+        } catch DecodingError.typeMismatch {
+            self.servingDictionary = try container.decodeIfPresent(Serving.self, forKey: .serving)
+            self.serving = nil
+        } catch {
+            throw DecodingError.dataCorruptedError(forKey: .serving, in: container, debugDescription: "Mismatched types")
+        }
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case serving
+    }
 }
+
+struct FirebaseFoodResponse: Codable {
+    let foodId: String
+    let foodName: String
+    let foodType: String
+    let foodUrl: String
+    let servings: [Serving]
+
+    enum CodingKeys: String, CodingKey {
+        case foodId = "food_id"
+        case foodName = "food_name"
+        case foodType = "food_type"
+        case foodUrl = "food_url"
+        case servings
+    }
+}
+

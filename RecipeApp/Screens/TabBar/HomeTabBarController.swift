@@ -13,12 +13,11 @@ protocol HomeTabBarProtocol: UITabBarController, AnyObject {
 
 final class HomeTabBarController: UITabBarController, HomeTabBarProtocol {
     enum Constants {
-        static let homeIcon = "home"
-        static let homeHighlighted = "selected_home"
-        static let savedIcon = "saved"
-        static let savedHighlighted = "selected_saved"
-        static let calorieCounterIcon = "calories"
-        static let calorieCounterIconHighlighted = "calories_selected"
+        static let homeIcon = "magnifyingglass"
+        static let savedIcon = "bookmark"
+        static let savedHighlighted = "bookmark.fill"
+        static let calorieCounterIcon = "scalemass"
+        static let calorieCounterIconHighlighted = "scalemass.fill"
     }
     
     override func viewDidLoad() {
@@ -28,19 +27,22 @@ final class HomeTabBarController: UITabBarController, HomeTabBarProtocol {
     }
     
     func setupTabBarItems() {
-        let homeViewController: HomeViewProtocol = HomeConfigurator.build()
-        let savedViewController: SavedViewProtocol = SavedConfigurator.build()
-        let calorieCounterViewController: CalorieCounterViewProtocol = CalorieCounterConfigurator.build()
-        
-        homeViewController.tabBarItem.image = UIImage(named: Constants.homeIcon)
-        homeViewController.tabBarItem.selectedImage = UIImage(named: Constants.homeHighlighted)
-        
-        savedViewController.tabBarItem.image = UIImage(named: Constants.savedIcon)
-        savedViewController.tabBarItem.selectedImage = UIImage(named: Constants.savedHighlighted)
-        
-        calorieCounterViewController.tabBarItem.image = UIImage(named: Constants.calorieCounterIcon)
-        calorieCounterViewController.tabBarItem.selectedImage = UIImage(named: Constants.calorieCounterIconHighlighted)
-        
-        viewControllers = [homeViewController, savedViewController, calorieCounterViewController]
+        viewControllers = [
+            createViewController(HomeConfigurator.build(),
+                                 image: Constants.homeIcon,
+                                 selectedImage: Constants.homeIcon),
+            createViewController(SavedConfigurator.build(),
+                                 image: Constants.savedIcon,
+                                 selectedImage: Constants.savedHighlighted),
+            createViewController(CalorieCounterConfigurator.build(),
+                                 image: Constants.calorieCounterIcon,
+                                 selectedImage: Constants.calorieCounterIconHighlighted)
+        ]
+    }
+
+    func createViewController(_ viewController: UIViewController, image: String, selectedImage: String) -> UIViewController {
+        viewController.tabBarItem.image = UIImage(systemName: image)?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        viewController.tabBarItem.selectedImage = UIImage(systemName: selectedImage)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        return viewController
     }
 }

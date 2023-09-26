@@ -34,6 +34,7 @@
 		BB34BB9B2A88C6F6006C2732 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB9A2A88C6F6006C2732 /* RegistrationView.swift */; };
 		BB34BB9D2A88C6FF006C2732 /* RegistrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB9C2A88C6FF006C2732 /* RegistrationConfigurator.swift */; };
 		BB48D86B2AA740EE00A874AC /* FatSecretProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48D86A2AA740EE00A874AC /* FatSecretProvider.swift */; };
+		BB6782992AC2E840003AF9D8 /* CalorieCounterStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6782982AC2E840003AF9D8 /* CalorieCounterStyle.swift */; };
 		BBA2961C2A82E6A2004996DE /* WelcomeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2961B2A82E6A2004996DE /* WelcomeStyle.swift */; };
 		BBA296212A82EA60004996DE /* LoginConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296202A82EA60004996DE /* LoginConstants.swift */; };
 		BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296232A863146004996DE /* WelcomeEntity.swift */; };
@@ -43,6 +44,9 @@
 		BBA2962C2A86316C004996DE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2962B2A86316C004996DE /* WelcomeView.swift */; };
 		BBA2962E2A864CA6004996DE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */; };
 		BBA296342A866997004996DE /* WelcomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296332A866997004996DE /* WelcomeConfigurator.swift */; };
+		BBB1FA592ABD896800E403BB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = BBB1FA582ABD896800E403BB /* DGCharts */; };
+		BBB1FA5B2ABD896800E403BB /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BBB1FA5A2ABD896800E403BB /* DGChartsDynamic */; };
+		BBBC5C9C2AC17A1C00DE22EE /* CalorieCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC5C9B2AC17A1C00DE22EE /* CalorieCounterCell.swift */; };
 		BBBF30172AA885BA0089CD62 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF30162AA885BA0089CD62 /* URLSession+Extension.swift */; };
 		BBBF30192AA8B9AB0089CD62 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF30182AA8B9AB0089CD62 /* Array+Extension.swift */; };
 		BBBF301B2AA8BA480089CD62 /* URLComponents+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF301A2AA8BA480089CD62 /* URLComponents+Extensions.swift */; };
@@ -51,6 +55,7 @@
 		BBC58CE72AB8A01A00C4E32E /* CalorieCounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */; };
 		BBC58CE92AB8A02300C4E32E /* CalorieCounterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */; };
 		BBC58CEB2AB8A08100C4E32E /* CalorieCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */; };
+		BBC58CED2AB8A7A600C4E32E /* SavedStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CEC2AB8A7A600C4E32E /* SavedStyle.swift */; };
 		BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */; };
 		BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */; };
 		BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */; };
@@ -111,6 +116,7 @@
 		BB34BB9A2A88C6F6006C2732 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BB34BB9C2A88C6FF006C2732 /* RegistrationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfigurator.swift; sourceTree = "<group>"; };
 		BB48D86A2AA740EE00A874AC /* FatSecretProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatSecretProvider.swift; sourceTree = "<group>"; };
+		BB6782982AC2E840003AF9D8 /* CalorieCounterStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterStyle.swift; sourceTree = "<group>"; };
 		BBA2961B2A82E6A2004996DE /* WelcomeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStyle.swift; sourceTree = "<group>"; };
 		BBA296202A82EA60004996DE /* LoginConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConstants.swift; sourceTree = "<group>"; };
 		BBA296232A863146004996DE /* WelcomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeEntity.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 		BBA2962B2A86316C004996DE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		BBA296332A866997004996DE /* WelcomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeConfigurator.swift; sourceTree = "<group>"; };
+		BBBC5C9B2AC17A1C00DE22EE /* CalorieCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterCell.swift; sourceTree = "<group>"; };
 		BBBF30162AA885BA0089CD62 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		BBBF30182AA8B9AB0089CD62 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		BBBF301A2AA8BA480089CD62 /* URLComponents+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Extensions.swift"; sourceTree = "<group>"; };
@@ -128,6 +135,7 @@
 		BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterPresenter.swift; sourceTree = "<group>"; };
 		BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterInteractor.swift; sourceTree = "<group>"; };
 		BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterConfigurator.swift; sourceTree = "<group>"; };
+		BBC58CEC2AB8A7A600C4E32E /* SavedStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedStyle.swift; sourceTree = "<group>"; };
 		BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -169,6 +177,8 @@
 				BB0C2B2A2AA9BEEE0077DCB8 /* CryptoSwift in Frameworks */,
 				BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */,
 				BB0C791F2AB6F4F700133319 /* SwipeCellKit in Frameworks */,
+				BBB1FA592ABD896800E403BB /* DGCharts in Frameworks */,
+				BBB1FA5B2ABD896800E403BB /* DGChartsDynamic in Frameworks */,
 				BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,9 +253,18 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		BBBC5C9A2AC17A0700DE22EE /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				BBBC5C9B2AC17A1C00DE22EE /* CalorieCounterCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		BBC58CE12AB89FF700C4E32E /* CalorieCounter */ = {
 			isa = PBXGroup;
 			children = (
+				BBBC5C9A2AC17A0700DE22EE /* Subviews */,
 				BBC58CE22AB8A00400C4E32E /* CalorieCounterView.swift */,
 				BBC58CE42AB8A01000C4E32E /* CalorieCounterRouter.swift */,
 				BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */,
@@ -289,6 +308,8 @@
 				BBCD56F92A94A81100F9BF61 /* RegistrationStyle.swift */,
 				BBCD56FB2A94A8C500F9BF61 /* GeneralStyle.swift */,
 				BBCD571E2AA0C53600F9BF61 /* HomeStyle.swift */,
+				BBC58CEC2AB8A7A600C4E32E /* SavedStyle.swift */,
+				BB6782982AC2E840003AF9D8 /* CalorieCounterStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -421,6 +442,8 @@
 				BBCD570A2A94F7FF00F9BF61 /* Lottie */,
 				BB0C2B292AA9BEEE0077DCB8 /* CryptoSwift */,
 				BB0C791E2AB6F4F700133319 /* SwipeCellKit */,
+				BBB1FA582ABD896800E403BB /* DGCharts */,
+				BBB1FA5A2ABD896800E403BB /* DGChartsDynamic */,
 			);
 			productName = RecipeApp;
 			productReference = BBD3F3672A8183BC00369CB2 /* RecipeApp.app */;
@@ -455,6 +478,7 @@
 				BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				BB0C2B282AA9BEEE0077DCB8 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = BBD3F3682A8183BC00369CB2 /* Products */;
 			projectDirPath = "";
@@ -498,6 +522,7 @@
 				BBCD57082A94DCD700F9BF61 /* FirebaseProviders.swift in Sources */,
 				BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */,
 				BBC58CE52AB8A01000C4E32E /* CalorieCounterRouter.swift in Sources */,
+				BBBC5C9C2AC17A1C00DE22EE /* CalorieCounterCell.swift in Sources */,
 				BB298AC02AAF227200137FB6 /* SavedConfigurator.swift in Sources */,
 				BBC58CE92AB8A02300C4E32E /* CalorieCounterInteractor.swift in Sources */,
 				BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */,
@@ -537,6 +562,7 @@
 				BB298A682AAB3D2600137FB6 /* HomeConfigurator.swift in Sources */,
 				BBBF301B2AA8BA480089CD62 /* URLComponents+Extensions.swift in Sources */,
 				BBCD56F62A94A02000F9BF61 /* UILabel+Extensions.swift in Sources */,
+				BBC58CED2AB8A7A600C4E32E /* SavedStyle.swift in Sources */,
 				BBCD56FA2A94A81100F9BF61 /* RegistrationStyle.swift in Sources */,
 				BB298AC62AAF4DD100137FB6 /* HomeWelcomeView.swift in Sources */,
 				BB298ABA2AAF225700137FB6 /* SavedInteractor.swift in Sources */,
@@ -546,6 +572,7 @@
 				BBCD571F2AA0C53600F9BF61 /* HomeStyle.swift in Sources */,
 				BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */,
 				BB48D86B2AA740EE00A874AC /* FatSecretProvider.swift in Sources */,
+				BB6782992AC2E840003AF9D8 /* CalorieCounterStyle.swift in Sources */,
 				BB112EE12AA5B4D50034C9B5 /* ProductCell.swift in Sources */,
 				BB298AD22AB0825E00137FB6 /* KeyboardManagingService.swift in Sources */,
 				BBCD56FC2A94A8C500F9BF61 /* GeneralStyle.swift in Sources */,
@@ -779,6 +806,14 @@
 				minimumVersion = 2.7.1;
 			};
 		};
+		BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -807,6 +842,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
 			productName = SwipeCellKit;
+		};
+		BBB1FA582ABD896800E403BB /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		BBB1FA5A2ABD896800E403BB /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
 		};
 		BBCD57022A94C78800F9BF61 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

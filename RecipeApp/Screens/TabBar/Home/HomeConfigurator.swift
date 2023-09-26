@@ -25,6 +25,7 @@ final class HomeConfigurator {
         
         interactor.presenter = presenter
         interactor.firebaseDataProvider = firebaseDataProvider
+        interactor.fatSecretProvider = fatSecretProvider
         
         router.view = view
         
