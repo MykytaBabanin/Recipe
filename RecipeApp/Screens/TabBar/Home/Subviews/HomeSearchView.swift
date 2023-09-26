@@ -22,7 +22,7 @@ final class HomeSearchView: UIView, UISearchBarDelegate {
     
     @Published var ingredients: [Food]?
     @Published var searchBarText = SearchConstants.empty
-
+    
     private let fatSearchProvider: FatSecretProviderProtocol
     private var subscriptions = Set<AnyCancellable>()
     
@@ -62,24 +62,28 @@ private extension HomeSearchView {
             .sink { [weak self] in
                 guard let self = self else { return }
                 Task {
-                    self.showAnimation {
-                        self.fatSearchProvider.key = FatSecret.apiKey
-                        self.fatSearchProvider.secret = FatSecret.apiSecret
-                        self.fatSearchProvider.searchFoodBy(name: self.searchBar.text ?? SearchConstants.empty, completion: { result in
-                            switch result {
-                            case .success(let fetchedFood):
-                                self.ingredients = self.uniqueIngredients(fetchedFood: fetchedFood)
-                            case .failure(let error):
-                                self.callAlert(with: error)
-                            }
-                        })
-                    }
+                    self.searchFoodById()
                 }
             }.store(in: &subscriptions)
     }
     
-    func uniqueIngredients(fetchedFood: FoodSearch) -> [Food]? {
-        let uniqueIngredientsDictionary = Dictionary(grouping: fetchedFood.foods.food, by: { $0.foodName })
+    func searchFoodById() {
+        showAnimation {
+            self.fatSearchProvider.key = FatSecret.apiKey
+            self.fatSearchProvider.secret = FatSecret.apiSecret
+            Task {
+                do {
+                    let fetchedFood = try await self.fatSearchProvider.searchFoodBy(name: self.searchBar.text ?? SearchConstants.empty)
+                    self.ingredients = self.uniqueIngredients(fetchedFood: fetchedFood)
+                } catch {
+                    self.callAlert(with: error as! FatSecretError)
+                }
+            }
+        }
+    }
+    
+    func uniqueIngredients(fetchedFood: FoodSearch?) -> [Food]? {
+        let uniqueIngredientsDictionary = Dictionary(grouping: fetchedFood?.foods.food ?? [], by: { $0.foodName })
         let uniqueIngredientsArray = uniqueIngredientsDictionary.values
         return uniqueIngredientsArray.compactMap { $0.first }
     }
@@ -124,3 +128,9 @@ private extension HomeSearchView {
     }
 }
 
+extension HomeSearchView {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchFoodById()
+    }
+}

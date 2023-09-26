@@ -6,23 +6,22 @@
 //
 
 import UIKit
-import Lottie
+import SwipeCellKit
 
 enum ProductCellConstants {
     static let productCellWidthIset: CGFloat = 30
     static let productCellHeight: CGFloat = 70
-    static let skeletonAnimationView = "skeleton"
-    static let productCellCornerRadius: CGFloat = 30
-    static let productCellShadowRadius: CGFloat = 4.0
-    static let productCellShadowOpacity: Float = 0.2
+    static let productCellCornerRadius: CGFloat = 10
+    static let productCellShadowRadius: CGFloat = 2.0
+    static let productCellShadowOpacity: Float = 0.1
     static let productCellIdentifier = "ProductCell"
-    static let disabledTileColor = GeneralStyle.mainAppColor
-    static let shadowOffset = CGSize(width: 0, height: 5)
+    static let disabledTileColor = UIColor.white
+    static let shadowOffset = CGSize(width: 0, height: 3)
     static let nameLabelInset: CGFloat = 8
     static let empty = ""
 }
 
-final class ProductCell: UICollectionViewCell {
+final class ProductCell: SwipeCollectionViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         Home.ProductLabel.apply(label)
@@ -31,11 +30,8 @@ final class ProductCell: UICollectionViewCell {
     
     static let identifier = ProductCellConstants.productCellIdentifier
     
-    private let animationView = AnimatedItem(animation: ProductCellConstants.skeletonAnimationView, speed: 0.3)
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        animationView.play()
         setupStyle()
         setupSubviews()
         setupAutoLayout()
@@ -46,15 +42,7 @@ final class ProductCell: UICollectionViewCell {
     }
     
     func configure(with food: Food?) {
-        if let food = food {
-            animationView.animationView?.isHidden = true
-            animationView.pause()
-            nameLabel.text = food.foodName
-        } else {
-            animationView.animationView?.isHidden = false
-            animationView.play()
-            nameLabel.text = ProductCellConstants.empty
-        }
+        nameLabel.text = food?.foodName
     }
 }
     
@@ -70,17 +58,14 @@ final class ProductCell: UICollectionViewCell {
         }
         
         func setupSubviews() {
-            addSubviewAndDisableAutoresizing(animationView.animationView ?? UIView())
             addSubviewAndDisableAutoresizing(nameLabel)
         }
         
         func setupAutoLayout() {
-            animationView.animationView?.pin(toEdges: self)
-            
             NSLayoutConstraint.activate([
                 nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                nameLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: ProductCellConstants.nameLabelInset),
-                nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -ProductCellConstants.nameLabelInset)
+                nameLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
+                nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor)
             ])
             let centerXConstraint = nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
             centerXConstraint.priority = .defaultHigh

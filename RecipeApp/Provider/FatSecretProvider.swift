@@ -24,8 +24,8 @@ protocol FatSecretProviderProtocol: AnyObject {
     var key: String { get set }
     var secret: String { get set }
     
-    func searchFoodBy(name: String, completion: @escaping (Result<FoodSearch, FatSecretError>) -> ())
-    func getFoodBy(id: String,  completion: @escaping (Result<FoodResponse, FatSecretError>) -> ())
+    func searchFoodBy(name: String) async throws -> FoodSearch?
+    func getFoodBy(id: String) async throws -> FoodResponse?
 }
 
 struct OauthConstants {
@@ -71,41 +71,34 @@ final class FatSecretAPI: FatSecretProviderProtocol {
         get { return _secret ?? "" }
     }
     
-    func searchFoodBy(name: String,
-                      completion: @escaping (Result<FoodSearch, FatSecretError>) -> ()) {
+    func searchFoodBy(name: String) async throws -> FoodSearch? {
         OauthConstants.fatSecret = ["format":"json", "method":"foods.search", "search_expression":name] as Dictionary
-        
-        let components = generateSignature()
-        Task {
-            do {
-                await fatSecretRequestWith(components: components, decodeType: FoodSearch.self) { result in
-                    switch result {
-                    case .success(let foodSearch):
-                        completion(.success(foodSearch))
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
-                }
-            }
+
+        do {
+            let components = generateSignature()
+            let response: FoodSearch = try await fatSecretRequestWith(components: components, decodeType: FoodSearch.self)
+            return response
+        } catch FatSecretError.invalidURL {
+        } catch FatSecretError.failedToDecode {
+        } catch {
+            print(error)
         }
+        return nil
     }
     
-    func getFoodBy(id: String, completion: @escaping (Result<FoodResponse, FatSecretError>) -> ()) {
+    func getFoodBy(id: String) async throws -> FoodResponse? {
         OauthConstants.fatSecret = ["format":"json", "method":"food.get", "food_id":id] as Dictionary
         
-        let components = generateSignature()
-        Task {
-            do {
-                await fatSecretRequestWith(components: components, decodeType: FoodResponse.self, completion: { result in
-                    switch result {
-                    case .success(let specificIngredient):
-                        completion(.success(specificIngredient))
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
-                })
-            }
+        do {
+            let components = generateSignature()
+            let foodResponse: FoodResponse = try await fatSecretRequestWith(components: components, decodeType: FoodResponse.self)
+            return foodResponse
+        } catch FatSecretError.invalidURL {
+        } catch FatSecretError.failedToDecode {
+        } catch {
+            print(error)
         }
+        return nil
     }
 }
 
@@ -144,29 +137,24 @@ private extension FatSecretAPI {
     }
     
     private func fatSecretRequestWith<T: Decodable>(components: URLComponents,
-                                                    decodeType: T.Type,
-                                                    completion: @escaping (Result<T, FatSecretError>) -> ()) async {
+                                                    decodeType: T.Type) async throws -> T {
         guard let url = URL(string: String(describing: components).replacingOccurrences(of: "+", with: "%2B")) else {
-            completion(.failure(.invalidURL))
-            return 
+            throw FatSecretError.invalidURL
         }
+        
         var request = URLRequest(url: url)
         request.httpMethod = OauthConstants.httpType
         
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        let decoder = JSONDecoder()
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let decoder = JSONDecoder()
-            do {
-                let searchObject = try decoder.decode(T.self, from: data)
-                completion(.success(searchObject))
-            } catch {
-                completion(.failure(.failedToDecode))
-            }
+            let searchObject = try decoder.decode(T.self, from: data)
+            return searchObject
         } catch {
-            completion(.failure(.failedToRetrieveData))
+            throw FatSecretError.failedToDecode
         }
     }
-
     
     private func retrieve<T: Decodable>(data: Data, type: T.Type) -> T? {
         let decoder = JSONDecoder()

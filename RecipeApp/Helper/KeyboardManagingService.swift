@@ -18,7 +18,7 @@ class KeyboardManager: KeyboardManagingProtocol {
     
     func setupKeyboardHandling(for viewController: UIViewController, scrollView: UIScrollView) {
         NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
-            .sink { [weak viewController, weak scrollView] notification in
+            .sink { [weak scrollView] notification in
                 if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
                    let scrollView = scrollView {
                     let keyboardHeight = keyboardSize.height

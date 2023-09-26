@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BB0C2B2A2AA9BEEE0077DCB8 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB0C2B292AA9BEEE0077DCB8 /* CryptoSwift */; };
+		BB0C791F2AB6F4F700133319 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BB0C791E2AB6F4F700133319 /* SwipeCellKit */; };
 		BB112EE12AA5B4D50034C9B5 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB112EE02AA5B4D50034C9B5 /* ProductCell.swift */; };
-		BB298A582AAB180000137FB6 /* skeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = BB298A572AAB17FF00137FB6 /* skeleton.json */; };
+		BB1616902AB8468400D12758 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BB16168F2AB8468400D12758 /* loading.json */; };
+		BB16169A2AB85A5700D12758 /* emptyList.json in Resources */ = {isa = PBXBuildFile; fileRef = BB1616992AB85A5700D12758 /* emptyList.json */; };
 		BB298A5D2AAB33C600137FB6 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB298A5C2AAB2FAB00137FB6 /* AirbnbCereal_W_XBd.otf */; };
 		BB298A632AAB355000137FB6 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB298A5F2AAB346D00137FB6 /* AirbnbCereal_W_Bk.otf */; };
 		BB298A642AAB355200137FB6 /* AirbnbCereal_W_Blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB298A622AAB346D00137FB6 /* AirbnbCereal_W_Blk.otf */; };
@@ -24,7 +26,6 @@
 		BB298AC02AAF227200137FB6 /* SavedConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298ABF2AAF227200137FB6 /* SavedConfigurator.swift */; };
 		BB298AC22AAF230500137FB6 /* SavedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AC12AAF230500137FB6 /* SavedRouter.swift */; };
 		BB298AC62AAF4DD100137FB6 /* HomeWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AC52AAF4DD100137FB6 /* HomeWelcomeView.swift */; };
-		BB298AD02AAF61B200137FB6 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = BB298ACF2AAF61B200137FB6 /* welcome.json */; };
 		BB298AD22AB0825E00137FB6 /* KeyboardManagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB298AD12AB0825E00137FB6 /* KeyboardManagingService.swift */; };
 		BB34BB902A88C1EA006C2732 /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */; };
 		BB34BB952A88C6DC006C2732 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */; };
@@ -33,6 +34,7 @@
 		BB34BB9B2A88C6F6006C2732 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB9A2A88C6F6006C2732 /* RegistrationView.swift */; };
 		BB34BB9D2A88C6FF006C2732 /* RegistrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34BB9C2A88C6FF006C2732 /* RegistrationConfigurator.swift */; };
 		BB48D86B2AA740EE00A874AC /* FatSecretProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48D86A2AA740EE00A874AC /* FatSecretProvider.swift */; };
+		BB6782992AC2E840003AF9D8 /* CalorieCounterStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6782982AC2E840003AF9D8 /* CalorieCounterStyle.swift */; };
 		BBA2961C2A82E6A2004996DE /* WelcomeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2961B2A82E6A2004996DE /* WelcomeStyle.swift */; };
 		BBA296212A82EA60004996DE /* LoginConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296202A82EA60004996DE /* LoginConstants.swift */; };
 		BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296232A863146004996DE /* WelcomeEntity.swift */; };
@@ -42,9 +44,18 @@
 		BBA2962C2A86316C004996DE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2962B2A86316C004996DE /* WelcomeView.swift */; };
 		BBA2962E2A864CA6004996DE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */; };
 		BBA296342A866997004996DE /* WelcomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA296332A866997004996DE /* WelcomeConfigurator.swift */; };
+		BBB1FA592ABD896800E403BB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = BBB1FA582ABD896800E403BB /* DGCharts */; };
+		BBB1FA5B2ABD896800E403BB /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BBB1FA5A2ABD896800E403BB /* DGChartsDynamic */; };
+		BBBC5C9C2AC17A1C00DE22EE /* CalorieCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC5C9B2AC17A1C00DE22EE /* CalorieCounterCell.swift */; };
 		BBBF30172AA885BA0089CD62 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF30162AA885BA0089CD62 /* URLSession+Extension.swift */; };
 		BBBF30192AA8B9AB0089CD62 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF30182AA8B9AB0089CD62 /* Array+Extension.swift */; };
 		BBBF301B2AA8BA480089CD62 /* URLComponents+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF301A2AA8BA480089CD62 /* URLComponents+Extensions.swift */; };
+		BBC58CE32AB8A00400C4E32E /* CalorieCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE22AB8A00400C4E32E /* CalorieCounterView.swift */; };
+		BBC58CE52AB8A01000C4E32E /* CalorieCounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE42AB8A01000C4E32E /* CalorieCounterRouter.swift */; };
+		BBC58CE72AB8A01A00C4E32E /* CalorieCounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */; };
+		BBC58CE92AB8A02300C4E32E /* CalorieCounterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */; };
+		BBC58CEB2AB8A08100C4E32E /* CalorieCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */; };
+		BBC58CED2AB8A7A600C4E32E /* SavedStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC58CEC2AB8A7A600C4E32E /* SavedStyle.swift */; };
 		BBCD56E42A914ABC00F9BF61 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */; };
 		BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */; };
 		BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */; };
@@ -60,7 +71,7 @@
 		BBCD57002A94C34500F9BF61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBCD56FF2A94C34500F9BF61 /* GoogleService-Info.plist */; };
 		BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD57022A94C78800F9BF61 /* FirebaseAuth */; };
 		BBCD57052A94C78800F9BF61 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD57042A94C78800F9BF61 /* FirebaseDatabaseSwift */; };
-		BBCD57082A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */; };
+		BBCD57082A94DCD700F9BF61 /* FirebaseProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57072A94DCD700F9BF61 /* FirebaseProviders.swift */; };
 		BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BBCD570A2A94F7FF00F9BF61 /* Lottie */; };
 		BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */; };
 		BBCD57112A9C7BB400F9BF61 /* LabeledLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */; };
@@ -80,7 +91,8 @@
 
 /* Begin PBXFileReference section */
 		BB112EE02AA5B4D50034C9B5 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
-		BB298A572AAB17FF00137FB6 /* skeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = skeleton.json; path = ../../../../../Downloads/skeleton.json; sourceTree = "<group>"; };
+		BB16168F2AB8468400D12758 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		BB1616992AB85A5700D12758 /* emptyList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyList.json; sourceTree = "<group>"; };
 		BB298A5C2AAB2FAB00137FB6 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		BB298A5E2AAB346D00137FB6 /* AirbnbCereal_W_Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bd.otf; sourceTree = "<group>"; };
 		BB298A5F2AAB346D00137FB6 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
@@ -96,7 +108,6 @@
 		BB298ABF2AAF227200137FB6 /* SavedConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedConfigurator.swift; sourceTree = "<group>"; };
 		BB298AC12AAF230500137FB6 /* SavedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRouter.swift; sourceTree = "<group>"; };
 		BB298AC52AAF4DD100137FB6 /* HomeWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWelcomeView.swift; sourceTree = "<group>"; };
-		BB298ACF2AAF61B200137FB6 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		BB298AD12AB0825E00137FB6 /* KeyboardManagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagingService.swift; sourceTree = "<group>"; };
 		BB34BB8F2A88C1EA006C2732 /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		BB34BB942A88C6DC006C2732 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
@@ -105,6 +116,7 @@
 		BB34BB9A2A88C6F6006C2732 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BB34BB9C2A88C6FF006C2732 /* RegistrationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfigurator.swift; sourceTree = "<group>"; };
 		BB48D86A2AA740EE00A874AC /* FatSecretProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatSecretProvider.swift; sourceTree = "<group>"; };
+		BB6782982AC2E840003AF9D8 /* CalorieCounterStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterStyle.swift; sourceTree = "<group>"; };
 		BBA2961B2A82E6A2004996DE /* WelcomeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStyle.swift; sourceTree = "<group>"; };
 		BBA296202A82EA60004996DE /* LoginConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConstants.swift; sourceTree = "<group>"; };
 		BBA296232A863146004996DE /* WelcomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeEntity.swift; sourceTree = "<group>"; };
@@ -114,9 +126,16 @@
 		BBA2962B2A86316C004996DE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		BBA2962D2A864CA6004996DE /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		BBA296332A866997004996DE /* WelcomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeConfigurator.swift; sourceTree = "<group>"; };
+		BBBC5C9B2AC17A1C00DE22EE /* CalorieCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterCell.swift; sourceTree = "<group>"; };
 		BBBF30162AA885BA0089CD62 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		BBBF30182AA8B9AB0089CD62 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		BBBF301A2AA8BA480089CD62 /* URLComponents+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Extensions.swift"; sourceTree = "<group>"; };
+		BBC58CE22AB8A00400C4E32E /* CalorieCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterView.swift; sourceTree = "<group>"; };
+		BBC58CE42AB8A01000C4E32E /* CalorieCounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterRouter.swift; sourceTree = "<group>"; };
+		BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterPresenter.swift; sourceTree = "<group>"; };
+		BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterInteractor.swift; sourceTree = "<group>"; };
+		BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCounterConfigurator.swift; sourceTree = "<group>"; };
+		BBC58CEC2AB8A7A600C4E32E /* SavedStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedStyle.swift; sourceTree = "<group>"; };
 		BBCD56E32A914ABC00F9BF61 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		BBCD56E52A914B0600F9BF61 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		BBCD56E72A914B0E00F9BF61 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -130,7 +149,7 @@
 		BBCD56FB2A94A8C500F9BF61 /* GeneralStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralStyle.swift; sourceTree = "<group>"; };
 		BBCD56FD2A94ADED00F9BF61 /* AutoLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutHelper.swift; sourceTree = "<group>"; };
 		BBCD56FF2A94C34500F9BF61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationProvider.swift; sourceTree = "<group>"; };
+		BBCD57072A94DCD700F9BF61 /* FirebaseProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProviders.swift; sourceTree = "<group>"; };
 		BBCD570D2A9B319100F9BF61 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BBCD57102A9C7BB400F9BF61 /* LabeledLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledLoginTextField.swift; sourceTree = "<group>"; };
 		BBCD571E2AA0C53600F9BF61 /* HomeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStyle.swift; sourceTree = "<group>"; };
@@ -157,6 +176,9 @@
 				BBCD57052A94C78800F9BF61 /* FirebaseDatabaseSwift in Frameworks */,
 				BB0C2B2A2AA9BEEE0077DCB8 /* CryptoSwift in Frameworks */,
 				BBCD57032A94C78800F9BF61 /* FirebaseAuth in Frameworks */,
+				BB0C791F2AB6F4F700133319 /* SwipeCellKit in Frameworks */,
+				BBB1FA592ABD896800E403BB /* DGCharts in Frameworks */,
+				BBB1FA5B2ABD896800E403BB /* DGChartsDynamic in Frameworks */,
 				BBCD570B2A94F7FF00F9BF61 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,8 +197,8 @@
 		BB1F907E2AA68051008D2EBA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				BB298ACF2AAF61B200137FB6 /* welcome.json */,
-				BB298A572AAB17FF00137FB6 /* skeleton.json */,
+				BB1616992AB85A5700D12758 /* emptyList.json */,
+				BB16168F2AB8468400D12758 /* loading.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -231,6 +253,27 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		BBBC5C9A2AC17A0700DE22EE /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				BBBC5C9B2AC17A1C00DE22EE /* CalorieCounterCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		BBC58CE12AB89FF700C4E32E /* CalorieCounter */ = {
+			isa = PBXGroup;
+			children = (
+				BBBC5C9A2AC17A0700DE22EE /* Subviews */,
+				BBC58CE22AB8A00400C4E32E /* CalorieCounterView.swift */,
+				BBC58CE42AB8A01000C4E32E /* CalorieCounterRouter.swift */,
+				BBC58CE62AB8A01A00C4E32E /* CalorieCounterPresenter.swift */,
+				BBC58CE82AB8A02300C4E32E /* CalorieCounterInteractor.swift */,
+				BBC58CEA2AB8A08100C4E32E /* CalorieCounterConfigurator.swift */,
+			);
+			path = CalorieCounter;
+			sourceTree = "<group>";
+		};
 		BBCD56E02A914AA700F9BF61 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +308,8 @@
 				BBCD56F92A94A81100F9BF61 /* RegistrationStyle.swift */,
 				BBCD56FB2A94A8C500F9BF61 /* GeneralStyle.swift */,
 				BBCD571E2AA0C53600F9BF61 /* HomeStyle.swift */,
+				BBC58CEC2AB8A7A600C4E32E /* SavedStyle.swift */,
+				BB6782982AC2E840003AF9D8 /* CalorieCounterStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -272,7 +317,7 @@
 		BBCD57062A94DCC600F9BF61 /* Provider */ = {
 			isa = PBXGroup;
 			children = (
-				BBCD57072A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift */,
+				BBCD57072A94DCD700F9BF61 /* FirebaseProviders.swift */,
 				BB48D86A2AA740EE00A874AC /* FatSecretProvider.swift */,
 			);
 			path = Provider;
@@ -365,8 +410,9 @@
 		BBF2A0822AA22D8800546736 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				BB298A692AAB484500137FB6 /* Saved */,
+				BBC58CE12AB89FF700C4E32E /* CalorieCounter */,
 				BBCD56E02A914AA700F9BF61 /* Home */,
+				BB298A692AAB484500137FB6 /* Saved */,
 				BBF2A0832AA22DAF00546736 /* HomeTabBarController.swift */,
 				BBCD56EB2A914B2F00F9BF61 /* TabBarConfigurator.swift */,
 				BB298A702AAB54FE00137FB6 /* AnimatedItem.swift */,
@@ -395,6 +441,9 @@
 				BBCD57042A94C78800F9BF61 /* FirebaseDatabaseSwift */,
 				BBCD570A2A94F7FF00F9BF61 /* Lottie */,
 				BB0C2B292AA9BEEE0077DCB8 /* CryptoSwift */,
+				BB0C791E2AB6F4F700133319 /* SwipeCellKit */,
+				BBB1FA582ABD896800E403BB /* DGCharts */,
+				BBB1FA5A2ABD896800E403BB /* DGChartsDynamic */,
 			);
 			productName = RecipeApp;
 			productReference = BBD3F3672A8183BC00369CB2 /* RecipeApp.app */;
@@ -428,6 +477,8 @@
 				BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				BBCD57092A94F7FF00F9BF61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				BB0C2B282AA9BEEE0077DCB8 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = BBD3F3682A8183BC00369CB2 /* Products */;
 			projectDirPath = "";
@@ -446,12 +497,12 @@
 				BB298A662AAB355600137FB6 /* AirbnbCereal_W_Md.otf in Resources */,
 				BB298A632AAB355000137FB6 /* AirbnbCereal_W_Bk.otf in Resources */,
 				BBD3F3772A8183BD00369CB2 /* LaunchScreen.storyboard in Resources */,
-				BB298AD02AAF61B200137FB6 /* welcome.json in Resources */,
-				BB298A582AAB180000137FB6 /* skeleton.json in Resources */,
 				BB298A652AAB355400137FB6 /* AirbnbCereal_W_Lt.otf in Resources */,
 				BB298A642AAB355200137FB6 /* AirbnbCereal_W_Blk.otf in Resources */,
 				BB298A5D2AAB33C600137FB6 /* AirbnbCereal_W_XBd.otf in Resources */,
 				BBD3F3742A8183BD00369CB2 /* Assets.xcassets in Resources */,
+				BB1616902AB8468400D12758 /* loading.json in Resources */,
+				BB16169A2AB85A5700D12758 /* emptyList.json in Resources */,
 				BBCD57002A94C34500F9BF61 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,9 +519,12 @@
 				BBCD570E2A9B319100F9BF61 /* String+Extensions.swift in Sources */,
 				BB34BB992A88C6EC006C2732 /* RegistrationPresenter.swift in Sources */,
 				BBD3F3832A81853F00369CB2 /* LoginPresenter.swift in Sources */,
-				BBCD57082A94DCD700F9BF61 /* FirebaseAuthenticationProvider.swift in Sources */,
+				BBCD57082A94DCD700F9BF61 /* FirebaseProviders.swift in Sources */,
 				BBCD56E82A914B0E00F9BF61 /* HomePresenter.swift in Sources */,
+				BBC58CE52AB8A01000C4E32E /* CalorieCounterRouter.swift in Sources */,
+				BBBC5C9C2AC17A1C00DE22EE /* CalorieCounterCell.swift in Sources */,
 				BB298AC02AAF227200137FB6 /* SavedConfigurator.swift in Sources */,
+				BBC58CE92AB8A02300C4E32E /* CalorieCounterInteractor.swift in Sources */,
 				BBCD56E62A914B0600F9BF61 /* HomeRouter.swift in Sources */,
 				BBD3F36F2A8183BC00369CB2 /* LoginView.swift in Sources */,
 				BB298AC22AAF230500137FB6 /* SavedRouter.swift in Sources */,
@@ -479,6 +533,7 @@
 				BBA2962A2A863162004996DE /* WelcomeRouter.swift in Sources */,
 				BBCD56F42A949A0300F9BF61 /* UIButton+Extensions.swift in Sources */,
 				BBD3F3892A81894000369CB2 /* UIView+Extensions.swift in Sources */,
+				BBC58CEB2AB8A08100C4E32E /* CalorieCounterConfigurator.swift in Sources */,
 				BBA296262A86314F004996DE /* WelcomeInteractor.swift in Sources */,
 				BBCD56EC2A914B2F00F9BF61 /* TabBarConfigurator.swift in Sources */,
 				BBF2A0842AA22DAF00546736 /* HomeTabBarController.swift in Sources */,
@@ -500,11 +555,14 @@
 				BBA296212A82EA60004996DE /* LoginConstants.swift in Sources */,
 				BBA2961C2A82E6A2004996DE /* WelcomeStyle.swift in Sources */,
 				BB34BB9D2A88C6FF006C2732 /* RegistrationConfigurator.swift in Sources */,
+				BBC58CE32AB8A00400C4E32E /* CalorieCounterView.swift in Sources */,
+				BBC58CE72AB8A01A00C4E32E /* CalorieCounterPresenter.swift in Sources */,
 				BBCD56F82A94A80900F9BF61 /* LoginStyle.swift in Sources */,
 				BBCD56F02A91566A00F9BF61 /* UiControl+Extensions.swift in Sources */,
 				BB298A682AAB3D2600137FB6 /* HomeConfigurator.swift in Sources */,
 				BBBF301B2AA8BA480089CD62 /* URLComponents+Extensions.swift in Sources */,
 				BBCD56F62A94A02000F9BF61 /* UILabel+Extensions.swift in Sources */,
+				BBC58CED2AB8A7A600C4E32E /* SavedStyle.swift in Sources */,
 				BBCD56FA2A94A81100F9BF61 /* RegistrationStyle.swift in Sources */,
 				BB298AC62AAF4DD100137FB6 /* HomeWelcomeView.swift in Sources */,
 				BB298ABA2AAF225700137FB6 /* SavedInteractor.swift in Sources */,
@@ -514,6 +572,7 @@
 				BBCD571F2AA0C53600F9BF61 /* HomeStyle.swift in Sources */,
 				BBA296242A863146004996DE /* WelcomeEntity.swift in Sources */,
 				BB48D86B2AA740EE00A874AC /* FatSecretProvider.swift in Sources */,
+				BB6782992AC2E840003AF9D8 /* CalorieCounterStyle.swift in Sources */,
 				BB112EE12AA5B4D50034C9B5 /* ProductCell.swift in Sources */,
 				BB298AD22AB0825E00137FB6 /* KeyboardManagingService.swift in Sources */,
 				BBCD56FC2A94A8C500F9BF61 /* GeneralStyle.swift in Sources */,
@@ -739,6 +798,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+		BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		BBCD57012A94C78800F9BF61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -762,6 +837,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BB0C2B282AA9BEEE0077DCB8 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		BB0C791E2AB6F4F700133319 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB0C791D2AB6F4F700133319 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
+		BBB1FA582ABD896800E403BB /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		BBB1FA5A2ABD896800E403BB /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBB1FA572ABD896800E403BB /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
 		};
 		BBCD57022A94C78800F9BF61 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

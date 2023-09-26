@@ -7,12 +7,18 @@
 
 import UIKit
 import Combine
+import SwipeCellKit
+import FirebaseAuth
 
 protocol SavedViewProtocol: UIViewController, AnyObject {
     var presenter: SavedPresenterProtocol? { get set }
 }
 
 final class SavedView: UIViewController, SavedViewProtocol {
+    enum Constants {
+        static let swipeActionTitle = "Delete"
+    }
+    
     var presenter: SavedPresenterProtocol?
     private let refreshControl = UIRefreshControl()
     private lazy var savedCollectionView: UICollectionView = {
@@ -21,6 +27,12 @@ final class SavedView: UIViewController, SavedViewProtocol {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         Home.CollectionView.apply(collectionView, refreshControl: refreshControl)
         return collectionView
+    }()
+    
+    private lazy var savedLabel: UILabel = {
+        let label = UILabel()
+        Saved.Label.apply(label)
+        return label
     }()
     
     //MARK: Combine properties
@@ -46,12 +58,17 @@ private extension SavedView {
     }
     
     func addSubview() {
+        view.addSubviewAndDisableAutoresizing(savedLabel)
         view.addSubviewAndDisableAutoresizing(savedCollectionView)
     }
     
     func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            savedCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            savedLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            savedLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            savedLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            savedCollectionView.topAnchor.constraint(equalTo: savedLabel.bottomAnchor, constant: 20),
             savedCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             savedCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             savedCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -80,13 +97,39 @@ private extension SavedView {
     }
 }
 
-extension SavedView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension SavedView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SwipeCollectionViewCellDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.transitionStyle = .drag
+        return options
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right,
+              let ingredients = self.presenter?.ingredients,
+              !ingredients.isEmpty else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: Constants.swipeActionTitle) { action, indexPath in
+            let ingredient = ingredients[indexPath.row]
+            if let user = Auth.auth().currentUser {
+                self.presenter?.removeIngredient(ingredient: ingredient, forUser: user.uid)
+                self.presenter?.fetchIngredients()
+            }
+        }
+        
+        deleteAction.hidesWhenSelected = true
+        
+        return [deleteAction]
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter?.ingredients?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCellConstants.productCellIdentifier, for: indexPath) as? ProductCell else { return UICollectionViewCell() }
+        cell.delegate = self
         cell.configure(with: presenter?.ingredients?[indexPath.row])
         return cell
     }

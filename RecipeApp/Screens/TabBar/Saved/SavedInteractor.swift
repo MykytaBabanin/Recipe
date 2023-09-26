@@ -10,30 +10,21 @@ import FirebaseDatabase
 
 protocol SavedInteractorProtocol: AnyObject {
     var presenter: SavedPresenterProtocol? { get set }
+    var firebaseDataProvider: FirebaseDataProviderProtocol? { get set }
+    
     func fetchIngredients(forUser id: String, completion: @escaping ([Food]) -> Void)
+    func removeIngredient(ingredient: Food, forUser id: String)
 }
 
 final class SavedInteractor: SavedInteractorProtocol {
     var presenter: SavedPresenterProtocol?
+    var firebaseDataProvider: FirebaseDataProviderProtocol?
     
     func fetchIngredients(forUser id: String, completion: @escaping ([Food]) -> Void) {
-        let database = Database.database(url: FirebaseConstants.databaseUrl)
-        let userIngredientsRef = database.reference().child(FirebaseConstants.usersDirectory).child(id).child(FirebaseConstants.ingredientsDirectory)
-        
-        userIngredientsRef.observeSingleEvent(of: .value) { (snapshot) in
-            var ingredients: [Food] = []
-            
-            for child in snapshot.children {
-                if let childSnapshot = child as? DataSnapshot,
-                   let dict = childSnapshot.value as? [String: Any],
-                   let name = dict[FirebaseConstants.nameField] as? String,
-                   let url = dict[FirebaseConstants.urlField] as? String {
-                    let ingredient = Food(foodId: "", foodName: name, foodUrl: url)
-                    ingredients.append(ingredient)
-                }
-            }
-            
-            completion(ingredients)
-        }
+        firebaseDataProvider?.fetchIngredients(forUser: id, completion: completion)
+    }
+    
+    func removeIngredient(ingredient: Food, forUser id: String) {
+        firebaseDataProvider?.remove(ingredient: ingredient, forUser: id)
     }
 }

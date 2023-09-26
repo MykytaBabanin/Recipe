@@ -14,6 +14,7 @@ protocol HomePresenterProtocol: AnyObject {
     
     func openDetailedPage(with id: String)
     func saveIngredients(ingredient: Food, forUser id: String)
+    func getFood(by id: String, userId: String) async throws
 }
 
 final class HomePresenter: HomePresenterProtocol {    
@@ -25,7 +26,13 @@ final class HomePresenter: HomePresenterProtocol {
         router?.openDetailedPage(with: url)
     }
     
+    func getFood(by id: String, userId: String) async throws {
+        do {
+            try await interactor?.getFood(by: id, forUser: userId)
+        }
+    }
+    
     func saveIngredients(ingredient: Food, forUser id: String) {
-        interactor?.saveIngredients(ingredient: ingredient, forUser: id)
+        interactor?.save(ingredient: ingredient, forUser: id)
     }
 }

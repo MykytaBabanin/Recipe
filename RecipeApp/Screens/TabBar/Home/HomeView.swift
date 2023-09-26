@@ -8,6 +8,13 @@
 import UIKit
 import Combine
 import FirebaseAuth
+import SwipeCellKit
+
+enum HomeState {
+    case empty
+    case loading
+    case loaded
+}
 
 protocol HomeViewProtocol: UIViewController, AnyObject {
     var presenter: HomePresenterProtocol? { get set }
@@ -29,6 +36,11 @@ enum HomeConstants {
     static let welcomeViewHeight: CGFloat = 100
     static let welcomeViewTop: CGFloat = 10
     static let productCollectionViewTop: CGFloat = 20
+    static let cellInsets: CGFloat = 4
+    
+    static let swipeElementBackgroundColor = GeneralStyle.mainAppColor
+    static let swipeElementImage = UIImage(systemName: "plus.circle.fill")
+    static let swipeElementTitle = "Add to Favourite"
 }
 
 final class HomeView: UIViewController, HomeViewProtocol {
@@ -47,6 +59,13 @@ final class HomeView: UIViewController, HomeViewProtocol {
         return collectionView
     }()
     
+    private var currentState: HomeState = .empty {
+        didSet {
+            updateViewStateAnimated()
+        }
+    }
+    private let loadingView = AnimatedItem(animation: "loading", speed: 0.5)
+    private let emptyView = AnimatedItem(animation: "emptyList", speed: 0.5)
     private var cancellables = Set<AnyCancellable>()
     private let animationDuration = HomeConstants.tappableAnimationDuration
     
@@ -68,31 +87,81 @@ final class HomeView: UIViewController, HomeViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = GeneralStyle.mainBackgroundColor
+        currentState = .empty
         setupSubviews()
         setupAutoLayout()
         disableBackNavigation()
         setupProductCell()
         setupBindings()
+        addKeyboardHandler()
     }
 }
 
 private extension HomeView {
+    func addKeyboardHandler() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
     func setupBindings() {
         homeSearchView.$ingredients
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.productCollectionView.reloadData()
+            .sink { [weak self] ingredient in
+                guard let self = self, let ingredient = ingredient else { return }
+                self.handleIngredientUpdate(ingredient)
             }.store(in: &cancellables)
         
         homeSearchView.$searchBarText
             .receive(on: DispatchQueue.main)
             .dropFirst()
             .sink { [weak self] input in
-                if input.isEmpty {
-                    self?.homeSearchView.ingredients?.removeAll()
-                    self?.productCollectionView.reloadData()
-                }
+                self?.handleSearchBarTextUpdate(input)
             }.store(in: &cancellables)
+    }
+    
+    func updateViewStateAnimated() {
+        UIView.animate(withDuration: animationDuration) { [weak self] in
+            guard let self = self else { return }
+            switch currentState {
+            case .empty:
+                self.emptyView.isHidden = false
+                self.loadingView.isHidden = true
+                self.productCollectionView.isHidden = true
+                self.emptyView.play()
+                self.loadingView.pause()
+                
+            case .loading:
+                self.loadingView.isHidden = false
+                self.emptyView.isHidden = true
+                self.productCollectionView.isHidden = true
+                self.loadingView.play()
+                self.emptyView.pause()
+                
+            case .loaded:
+                self.productCollectionView.isHidden = false
+                self.emptyView.isHidden = true
+                self.loadingView.isHidden = true
+                self.loadingView.pause()
+                self.emptyView.pause()
+            }
+        }
+    }
+    
+    func handleSearchBarTextUpdate(_ input: String) {
+        if input.isEmpty {
+            homeSearchView.ingredients?.removeAll()
+            currentState = .empty
+        } else {
+            currentState = .loading
+        }
+    }
+    
+    func handleIngredientUpdate(_ ingredient: [Food]?) {
+        guard let ingredient = ingredient else { return }
+        
+        currentState = ingredient.isEmpty ? .empty : .loaded
+        productCollectionView.reloadData()
     }
     
     func setupProductCell() {
@@ -101,7 +170,7 @@ private extension HomeView {
         productCollectionView.dataSource = self
     }
     
-    private func callValidationAlert(with error: Error) {
+    func callValidationAlert(with error: Error) {
         let alert = UIAlertController(title: HomeConstants.registrationAlertTitle, message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: HomeConstants.alertActionButton, style: .cancel)
         alert.addAction(action)
@@ -116,6 +185,8 @@ private extension HomeView {
         view.addSubviewAndDisableAutoresizing(homeWelcomeView)
         view.addSubviewAndDisableAutoresizing(homeSearchView)
         view.addSubviewAndDisableAutoresizing(productCollectionView)
+        view.addSubviewAndDisableAutoresizing(emptyView)
+        view.addSubviewAndDisableAutoresizing(loadingView)
     }
     
     func setupAutoLayout() {
@@ -132,25 +203,70 @@ private extension HomeView {
             productCollectionView.topAnchor.constraint(equalTo: homeSearchView.bottomAnchor, constant: HomeConstants.productCollectionViewTop),
             productCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             productCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            productCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            productCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            emptyView.topAnchor.constraint(equalTo: homeSearchView.bottomAnchor),
+            emptyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            emptyView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            loadingView.topAnchor.constraint(equalTo: homeSearchView.bottomAnchor, constant: 20),
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
 
-extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SwipeCollectionViewCellDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.transitionStyle = .drag
+        return options
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right,
+              let ingredients = self.homeSearchView.ingredients,
+              let user = Auth.auth().currentUser,
+              !ingredients.isEmpty else { return nil }
+        
+        let ingredient = ingredients[indexPath.row]
+        
+        let addToFavouriteAction = SwipeAction(style: .destructive, title: HomeConstants.swipeElementTitle) { [weak self] action, indexPath in
+            self?.presenter?.saveIngredients(ingredient: ingredient, forUser: user.uid)
+        }
+        
+        let addToCounterAction = SwipeAction(style: .destructive, title: HomeConstants.swipeElementTitle) { [weak self] action, indexPath in
+            Task {
+                try await self?.presenter?.getFood(by: ingredients[indexPath.row].foodId, userId: user.uid)
+            }
+        }
+        
+        addToCounterAction.backgroundColor = .yellow
+        addToCounterAction.hidesWhenSelected = true
+        
+        addToFavouriteAction.backgroundColor = HomeConstants.swipeElementBackgroundColor
+        addToFavouriteAction.image = HomeConstants.swipeElementImage
+        addToFavouriteAction.hidesWhenSelected = true
+        
+        return [addToCounterAction, addToFavouriteAction]
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homeSearchView.ingredients?.isEmpty ?? true ? HomeConstants.defaultAmountOfCells : homeSearchView.ingredients?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - HomeConstants.productCellWidthIset, height: HomeConstants.productCellHeight)
+        return CGSize(width: collectionView.frame.width - HomeConstants.cellInsets, height: HomeConstants.productCellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as? ProductCell else {
             return UICollectionViewCell()
         }
-        
+        cell.delegate = self
         cell.alpha = 0
         if let ingredients = homeSearchView.ingredients, indexPath.row < ingredients.count {
             let ingredient = ingredients[indexPath.row]
@@ -168,14 +284,18 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ProductCell else { return }
-        cell.showAnimation {
-            if let ingredient = self.homeSearchView.ingredients?[indexPath.row] {
-                if let user = Auth.auth().currentUser {
-                    self.presenter?.saveIngredients(ingredient: ingredient, forUser: user.uid)
-                }
-                self.presenter?.openDetailedPage(with: ingredient.foodUrl)
-            }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ProductCell,
+              let ingredients = self.homeSearchView.ingredients,
+              indexPath.row < ingredients.count else {
+            return
         }
+        let ingredient = ingredients[indexPath.row]
+        cell.showAnimation {
+            self.presenter?.openDetailedPage(with: ingredient.foodUrl)
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }

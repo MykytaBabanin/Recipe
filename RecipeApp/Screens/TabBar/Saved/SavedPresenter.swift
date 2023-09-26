@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
 
 protocol SavedPresenterProtocol: AnyObject {
     var router: SavedRouterProtocol? { get set }
@@ -16,6 +17,7 @@ protocol SavedPresenterProtocol: AnyObject {
     var ingredientsPublisher: Published<[Food]?>.Publisher { get }
     
     func openDetailedPage(with url: String)
+    func removeIngredient(ingredient: Food, forUser id: String)
     func fetchIngredients()
 }
 
@@ -40,5 +42,11 @@ final class SavedPresenter: SavedPresenterProtocol {
     
     func openDetailedPage(with url: String) {
         router?.openDetailedPage(with: url)
+    }
+    
+    func removeIngredient(ingredient: Food, forUser id: String) {
+        let database = Database.database(url: FirebaseConstants.databaseUrl)
+        let userIngredientsRef = database.reference().child(FirebaseConstants.usersDirectory).child(id).child(FirebaseConstants.ingredientsDirectory).child(ingredient.foodId)
+        userIngredientsRef.removeValue()
     }
 }

@@ -10,19 +10,28 @@ import Firebase
 
 protocol HomeInteractorProtocol: AnyObject {
     var presenter: HomePresenterProtocol? { get set }
+    var firebaseDataProvider: FirebaseDataProviderProtocol? { get set }
+    var fatSecretProvider: FatSecretProviderProtocol? { get set }
     
-    func saveIngredients(ingredient: Food, forUser id: String)
+    func save(ingredient: Food, forUser id: String)
+    func getFood(by id: String, forUser userId: String) async throws
 }
 
-final class HomeInteractor: HomeInteractorProtocol {    
+final class HomeInteractor: HomeInteractorProtocol {
     var presenter: HomePresenterProtocol?
+    var firebaseDataProvider: FirebaseDataProviderProtocol?
+    var fatSecretProvider: FatSecretProviderProtocol?
     
-    func saveIngredients(ingredient: Food, forUser id: String) {
-        let database = Database.database(url: FirebaseConstants.databaseUrl)
-        let userIngredientsRef = database.reference().child(FirebaseConstants.usersDirectory).child(id).child(FirebaseConstants.ingredientsDirectory).child(ingredient.foodId)
-        userIngredientsRef.setValue([
-            FirebaseConstants.nameField: ingredient.foodName,
-            FirebaseConstants.urlField: ingredient.foodUrl
-        ])
+    func save(ingredient: Food, forUser id: String) {
+        firebaseDataProvider?.save(ingredient: ingredient, forUser: id)
+    }
+    
+    func getFood(by id: String, forUser userId: String) async throws {
+        do {
+            let fetchedFood = try await fatSecretProvider?.getFoodBy(id: id)
+            if let fetchedFood = fetchedFood {
+                firebaseDataProvider?.save(details: fetchedFood.food, forUser: userId)
+            }
+        }
     }
 }
